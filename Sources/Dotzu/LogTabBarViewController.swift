@@ -46,8 +46,8 @@ class LogTabBarViewController: UITabBarController {
             
             //************ 以下代码从LogNavigationViewController.swift复制 ************
             nav.navigationBar.tintColor = Color.mainGreen
-            nav.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
-                                                     NSAttributedStringKey.foregroundColor: Color.mainGreen]
+            nav.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20),
+                                                 NSForegroundColorAttributeName: Color.mainGreen]
             
             let selector = #selector(LogNavigationViewController.exit)
             

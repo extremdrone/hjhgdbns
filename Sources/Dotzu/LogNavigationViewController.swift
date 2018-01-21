@@ -16,8 +16,8 @@ class LogNavigationViewController: UINavigationController {
         navigationBar.isTranslucent = false //liman
         
         navigationBar.tintColor = Color.mainGreen
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
-                                             NSAttributedStringKey.foregroundColor: Color.mainGreen]
+        navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 20),
+                                             NSForegroundColorAttributeName: Color.mainGreen]
 
         let selector = #selector(LogNavigationViewController.exit)
 

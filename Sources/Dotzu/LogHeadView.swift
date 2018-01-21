@@ -84,7 +84,7 @@ class LogHeadView: UIView {
             label.adjustsFontSizeToFitWidth = true
             //step 2
             if #available(iOS 8.2, *) {
-                label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+                label.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightBold)
             } else {
                 // Fallback on earlier versions
                 label.font = UIFont.boldSystemFont(ofSize: 17)

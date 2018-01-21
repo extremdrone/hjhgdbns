@@ -47,14 +47,14 @@ class NetworkCell: UITableViewCell {
             requestUrlTextView.text = httpModel?.url.absoluteString
             if requestUrlTextView.text?.contains(serverURL) == true {
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightHeavy)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
                 }
             }else{
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFontWeightRegular)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.systemFont(ofSize: 13)

@@ -10,11 +10,11 @@
 
 # DebugMan
 
-debugger tool for iOS
+Debugger tool for iOS
 
 ## Introduction
 
-The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/capitalone/SWHttpTrafficRecorder) so that people can make crappy clones.
+The author stole the idea from [Dotzu](https://github.com/remirobert/Dotzu) [JxbDebugTool](https://github.com/JxbSir/JxbDebugTool) [SWHttpTrafficRecorder](https://github.com/Amindv1/SWHttpTrafficRecorder) so that people can make crappy clones.
 
 `DebugMan` is an debugger tool for iOS, with the following features:
 
@@ -40,12 +40,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.4.5' , :configurations => ['Debug']
+pod 'DebugMan', '~> 4.5.0' , :configurations => ['Debug'] #Swift4
+#pod 'DebugMan', '~> 3.5.0' , :configurations => ['Debug'] #Swift3
 end
 ```
-
-- use `~> 4.4.5` if your project use `Swift 4`
-- use `~> 3.4.5` if your project use `Swift 3`
 
 ## Usage
 

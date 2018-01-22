@@ -78,7 +78,7 @@ Small Tips:
 - APP memory real-time monitoring data displayed on the black ball.
 - For more instructions, please check my demo.
 
-<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="150"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="150">
+<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="200"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="200">
 
 ## Contact
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DebugMan"
-  s.version      = "3.5.0"
+  s.version      = "3.5.1"
   s.summary      = "Debugger tool for iOS"
   s.description  = <<-DESC
                     DebugMan is an debugger tool for iOS, with the following features:

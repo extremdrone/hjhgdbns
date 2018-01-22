@@ -40,8 +40,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'your_project' do
-pod 'DebugMan', '~> 4.5.0' , :configurations => ['Debug'] #Swift4
-#pod 'DebugMan', '~> 3.5.0' , :configurations => ['Debug'] #Swift3
+ pod 'DebugMan', '~> 4.5.0' , :configurations => ['Debug'] #Swift 4
+#pod 'DebugMan', '~> 3.5.0' , :configurations => ['Debug'] #Swift 3
 end
 ```
 

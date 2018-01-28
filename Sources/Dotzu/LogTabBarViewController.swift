@@ -29,12 +29,20 @@ class LogTabBarViewController: UITabBarController {
         let Logs = UIStoryboard(name: "Logs", bundle: Bundle(for: DebugMan.self))
         let Network = UIStoryboard(name: "Network", bundle: Bundle(for: DebugMan.self))
         let App = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self))
+//        let Sandbox = UIStoryboard(name: "Sandbox", bundle: Bundle(for: DebugMan.self))
         
         let Logs_ = Logs.instantiateViewController(withIdentifier: "Logs")
         let Network_ = Network.instantiateViewController(withIdentifier: "Network")
         let App_ = App.instantiateViewController(withIdentifier: "App")
+//        let Sandbox_ = Sandbox.instantiateViewController(withIdentifier: "Sandbox")
         
-        self.viewControllers = [Logs_, Network_, App_]
+        
+        let sandboxBrowser = SandboxBrowser()
+        sandboxBrowser.didSelectFile = { file, vc in
+            print(file.name, file.type)
+        }
+        
+        self.viewControllers = [Logs_, Network_, App_, sandboxBrowser]
         
         
         //添加额外的控制器

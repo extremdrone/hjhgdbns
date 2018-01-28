@@ -18,7 +18,6 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
     if (self) {
         [self setupViews];
     }
-    
     return self;
 }
 
@@ -29,16 +28,13 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
     self.backgroundColor = [UIColor blackColor];
     self.contentView.backgroundColor = [UIColor blackColor];
     self.textLabel.textColor = [UIColor whiteColor];
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.detailTextLabel.textColor = [UIColor whiteColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
+//    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *selectedView = [[UIView alloc] init];
+    selectedView.backgroundColor = [UIColor clearColor];
+    self.selectedBackgroundView = selectedView;
 }
-
-#pragma mark - Action
-
-
-
-#pragma mark - Public Methods
-
-
 
 @end

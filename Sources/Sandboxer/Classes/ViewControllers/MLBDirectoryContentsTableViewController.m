@@ -65,6 +65,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
++ (instancetype)instanceFromStoryBoard
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sandbox" bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:@"MLBDirectoryContentsTableViewController"];
+}
+
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,7 +93,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     //liman
     self.view.backgroundColor = [UIColor blackColor];
     self.tableView.backgroundColor = [UIColor blackColor];
-    self.tableView.tableFooterView = [UIView new];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
@@ -127,24 +133,22 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
-//    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView registerClass:[MLBFileTableViewCell class] forCellReuseIdentifier:MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
     
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
-        self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        self.searchController.searchBar.backgroundColor = [UIColor blackColor];
-        self.searchController.dimsBackgroundDuringPresentation = NO;
-        self.searchController.searchResultsUpdater = self;
-        self.searchController.searchBar.delegate = self;
-        self.searchController.delegate = self;
-        
+    //liman
+//    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
+//        self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+//        self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+//        self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+//        self.searchController.dimsBackgroundDuringPresentation = NO;
+//        self.searchController.searchResultsUpdater = self;
+//        self.searchController.searchBar.delegate = self;
+//        self.searchController.delegate = self;
+//
 //        self.tableView.tableHeaderView = self.searchController.searchBar;
-    } else {
-        
-    }
+//    }
 }
 
 - (void)registerForPreviewing {
@@ -198,7 +202,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (UIViewController *)viewControllerWithFileInfo:(MLBFileInfo *)fileInfo {
     if (fileInfo.isDirectory) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
+        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [MLBDirectoryContentsTableViewController instanceFromStoryBoard];
         directoryContentsTableViewController.fileInfo = fileInfo;
         return directoryContentsTableViewController;
     } else {
@@ -329,6 +333,14 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (nil == self.deleteAllItem) {
         self.deleteAllItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete_all"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteAllAction)];
         self.deleteItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"delete"] style:UIBarButtonItemStylePlain target:self action:@selector(deleteSelectedFilesAction)];
+        
+        //liman
+        [self.deleteAllItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]} forState:UIControlStateNormal];
+        [self.deleteItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]} forState:UIControlStateNormal];
+        [self.deleteAllItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:209/255.0 green:157/255.0 blue:157/255.0 alpha:1.0]} forState:UIControlStateHighlighted];
+        [self.deleteItem setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:209/255.0 green:157/255.0 blue:157/255.0 alpha:1.0]} forState:UIControlStateHighlighted];
+        
+        
         [self setToolbarItems:@[self.deleteAllItem,
                                 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                                 self.deleteItem] animated:YES];

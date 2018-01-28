@@ -69,7 +69,7 @@
 
 - (UINavigationController *)homeDirectoryNavigationController {
     if (!_homeDirectoryNavigationController) {
-        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [[MLBDirectoryContentsTableViewController alloc] init];
+        MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [MLBDirectoryContentsTableViewController instanceFromStoryBoard];
         directoryContentsTableViewController.homeDirectory = YES;
         directoryContentsTableViewController.fileInfo = [[MLBFileInfo alloc] initWithFileURL:self.homeFileURL];
         directoryContentsTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;

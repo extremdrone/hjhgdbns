@@ -14,4 +14,7 @@
 @property (nonatomic, assign, getter=isHomeDirectory) BOOL homeDirectory;
 @property (nonatomic, strong) MLBFileInfo *fileInfo;
 
+//liman
++ (instancetype)instanceFromStoryBoard;
+
 @end

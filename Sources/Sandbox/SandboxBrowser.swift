@@ -105,7 +105,7 @@ public class FileListViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds)
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 70
@@ -129,17 +129,34 @@ public class FileListViewController: UIViewController {
         self.init()
         
         self.initialPath = initialPath
-//        self.title = initialPath.lastPathComponent
-        self.title = "Sandbox" //liman
+        self.title = initialPath.lastPathComponent
+        
+        //liman
+        if self.title == URL(fileURLWithPath: NSHomeDirectory()).lastPathComponent {
+            self.title = "Sandbox"
+        }
     }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         view.addSubview(tableView)
         
         loadPath(initialPath!.relativePath)
+        
+        
+        //liman
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(hexString: "#1f2124")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+
+        tableView.tableFooterView = UIView()
+//        tableView.separatorStyle = .none
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func onLongPress(gesture: UILongPressGestureRecognizer) {
@@ -217,6 +234,20 @@ class FileCell: UITableViewCell {
         detailLabelFrame.origin.x = textLabelFrame.origin.x
         detailLabelFrame.origin.y = detailLabelFrame.origin.y + 5
         detailTextLabel?.frame = detailLabelFrame
+    }
+    
+    //liman
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        backgroundColor = .black
+        textLabel?.textColor = .white
+        detailTextLabel?.textColor = .white
+        selectionStyle = .none
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 

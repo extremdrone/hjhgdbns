@@ -13,7 +13,7 @@
 #import "Sandboxer-Header.h"
 #import "Sandboxer.h"
 
-@interface MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface MLBFilePreviewController () <QLPreviewControllerDataSource, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 //@property (strong, nonatomic) QLPreviewController *previewController;
 @property (strong, nonatomic) WKWebView *wkWebView;
@@ -35,7 +35,6 @@
 
     self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
     
-    [self initDatas];
     [self setupViews];
     [self loadFile];
     
@@ -73,10 +72,6 @@
 }
 
 #pragma mark - Private Methods
-
-- (void)initDatas {
-    
-}
 
 - (void)setupViews {
 //    self.previewController = [[QLPreviewController alloc] init];
@@ -182,23 +177,6 @@
 
 - (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
     return self.fileInfo.URL;
-}
-
-#pragma mark - UIWebViewDelegate
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.activityIndicatorView startAnimating];
-}
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    [self.activityIndicatorView stopAnimating];
-}
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
-    [self.activityIndicatorView stopAnimating];
 }
 
 #pragma mark - WKNavigationDelegate

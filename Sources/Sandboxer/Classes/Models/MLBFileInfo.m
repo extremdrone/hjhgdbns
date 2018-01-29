@@ -32,7 +32,7 @@
             self.filesCount = [MLBFileInfo contentCountOfDirectoryAtURL:URL];
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"%@ %@", [SandboxerHelper sizeOfFolder:URL.path], [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFolder:URL.path]];
             }
         } else {
             self.extension = URL.pathExtension;
@@ -40,7 +40,7 @@
             self.filesCount = 0;
             //liman
             if ([URL isFileURL]) {
-                self.modificationDateText = [NSString stringWithFormat:@"%@ %@", [SandboxerHelper sizeOfFile:URL.path], [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate]];
+                self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFile:URL.path]];
             }
         }
     }

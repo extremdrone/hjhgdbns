@@ -27,10 +27,13 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
     //liman
     self.backgroundColor = [UIColor blackColor];
     self.contentView.backgroundColor = [UIColor blackColor];
+    
     self.textLabel.textColor = [UIColor whiteColor];
-    self.detailTextLabel.textColor = [UIColor whiteColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
+    
+    self.detailTextLabel.textColor = [UIColor grayColor];
     self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+    self.detailTextLabel.font = [UIFont boldSystemFontOfSize:12];
 //    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UIView *selectedView = [[UIView alloc] init];

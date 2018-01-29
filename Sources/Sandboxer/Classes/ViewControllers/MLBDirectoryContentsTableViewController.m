@@ -118,19 +118,27 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)setupViews {
-    self.refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDirectoryContents)];
-    NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray arrayWithObject:self.refreshItem];
+//    self.refreshItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(loadDirectoryContents)];
+//    NSMutableArray<UIBarButtonItem *> *rightBarButtonItems = [NSMutableArray arrayWithObject:self.refreshItem];
+//    if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
+//        self.editItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
+//        self.editItem.possibleTitles = [NSSet setWithObjects:[NSBundle mlb_localizedStringForKey:@"edit"], [NSBundle mlb_localizedStringForKey:@"cancel"], nil];
+//        [rightBarButtonItems addObject:self.editItem];
+//    }
+//    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
+    
+    //liman
     if ([Sandboxer shared].isFileDeletable || [Sandboxer shared].isDirectoryDeletable) {
         self.editItem = [[UIBarButtonItem alloc] initWithTitle:[NSBundle mlb_localizedStringForKey:@"edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
         self.editItem.possibleTitles = [NSSet setWithObjects:[NSBundle mlb_localizedStringForKey:@"edit"], [NSBundle mlb_localizedStringForKey:@"cancel"], nil];
-        [rightBarButtonItems addObject:self.editItem];
+        self.navigationItem.rightBarButtonItem = self.editItem;
     }
     
-    self.navigationItem.rightBarButtonItems = rightBarButtonItems;
     
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
     [self.tableView registerClass:[MLBFileTableViewCell class] forCellReuseIdentifier:MLBFileTableViewCellReuseIdentifier];
     self.tableView.rowHeight = 60.0;
+    
     
     //liman
 //    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
@@ -483,8 +491,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     MLBFileInfo *fileInfo = [self fileInfoAtIndexPath:indexPath];
     cell.imageView.image = [MLBImageResources fileTypeImageNamed:fileInfo.typeImageName];
     cell.textLabel.text = [Sandboxer shared].isExtensionHidden ? fileInfo.displayName.stringByDeletingPathExtension : fileInfo.displayName;
-    cell.detailTextLabel.text = fileInfo.modificationDateText;
     cell.accessoryType = fileInfo.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+//    cell.detailTextLabel.text = fileInfo.modificationDateText;
+    
+    //liman
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:fileInfo.modificationDateText];
+    if ([attributedString length] >= 21) {
+        [attributedString setAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0], NSFontAttributeName: [UIFont boldSystemFontOfSize:12]} range:NSMakeRange(0, 21)];
+    }
+    cell.detailTextLabel.attributedText = [attributedString copy];
     
     return cell;
 }

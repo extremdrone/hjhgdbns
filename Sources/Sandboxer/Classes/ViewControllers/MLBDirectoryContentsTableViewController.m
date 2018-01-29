@@ -43,7 +43,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 #pragma mark - liman
 - (void)customNavigationBar
 {
-    //1. copied from LogNavigationViewController.swift viewDidLoad() by liman
+    //copied from LogNavigationViewController.swift viewDidLoad() by liman
     self.navigationController.navigationBar.translucent = NO;
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
@@ -54,10 +54,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close"] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftButton;
-    
-    //2. add by liman
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)exit
@@ -75,11 +71,15 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //add by liman
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    
     if (MLBIsStringEmpty(self.title)) {
         if (self.isHomeDirectory) {
+            [self customNavigationBar];//liman
             self.title = [NSBundle mlb_localizedStringForKey:@"sandbox"];
-            //liman
-            [self customNavigationBar];
         } else {
             self.title = self.fileInfo.displayName;
         }
@@ -88,13 +88,20 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self initDatas];
     [self setupViews];
     [self registerForPreviewing];
-    [self loadDirectoryContents];
     
     //liman
     self.view.backgroundColor = [UIColor blackColor];
     self.tableView.backgroundColor = [UIColor blackColor];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //liman
+    [self loadDirectoryContents];
+    [self endEditing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

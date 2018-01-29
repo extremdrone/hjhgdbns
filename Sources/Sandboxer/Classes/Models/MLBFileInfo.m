@@ -26,15 +26,22 @@
         self.URL = URL;
         self.displayName = URL.lastPathComponent;
         self.attributes = [MLBFileInfo attributesWithFileURL:URL];
-        self.modificationDateText = [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate];
         
         if ([self.attributes.fileType isEqualToString:NSFileTypeDirectory]) {
             self.type = MLBFileTypeDirectory;
             self.filesCount = [MLBFileInfo contentCountOfDirectoryAtURL:URL];
+            //liman
+            if ([URL isFileURL]) {
+                self.modificationDateText = [NSString stringWithFormat:@"%@ %@", [SandboxerHelper sizeOfFolder:URL.path], [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate]];
+            }
         } else {
             self.extension = URL.pathExtension;
             self.type = [MLBFileInfo fileTypeWithExtension:self.extension];
             self.filesCount = 0;
+            //liman
+            if ([URL isFileURL]) {
+                self.modificationDateText = [NSString stringWithFormat:@"%@ %@", [SandboxerHelper sizeOfFile:URL.path], [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate]];
+            }
         }
     }
     

@@ -30,6 +30,7 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
     self.textLabel.textColor = [UIColor whiteColor];
     self.detailTextLabel.textColor = [UIColor whiteColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
+    self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 //    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     UIView *selectedView = [[UIView alloc] init];

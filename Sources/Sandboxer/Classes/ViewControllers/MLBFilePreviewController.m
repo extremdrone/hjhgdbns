@@ -42,7 +42,6 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.textView.backgroundColor = [UIColor blackColor];
     self.textView.textColor = [UIColor whiteColor];
-    self.hidesBottomBarWhenPushed = YES;
 }
 
 - (void)viewDidLayoutSubviews {

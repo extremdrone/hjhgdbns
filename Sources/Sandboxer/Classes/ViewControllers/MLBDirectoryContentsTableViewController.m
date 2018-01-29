@@ -97,22 +97,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    //liman
-    self.hidesBottomBarWhenPushed = YES;
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (self.tableView.isEditing) {
         [self.navigationController setToolbarHidden:YES animated:YES];
-    }
-    
-    //liman
-    if ([self.title isEqualToString:@"Sandbox"]) {
-        self.hidesBottomBarWhenPushed = NO;
     }
 }
 
@@ -201,6 +189,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UIViewController *)viewControllerWithFileInfo:(MLBFileInfo *)fileInfo {
     if (fileInfo.isDirectory) {
         MLBDirectoryContentsTableViewController *directoryContentsTableViewController = [MLBDirectoryContentsTableViewController instanceFromStoryBoard];
+        directoryContentsTableViewController.hidesBottomBarWhenPushed = YES;//liman
         directoryContentsTableViewController.fileInfo = fileInfo;
         return directoryContentsTableViewController;
     } else {
@@ -214,6 +203,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         } else {
             NSLog(@"Quick Look can not preview this file");
             MLBFilePreviewController *filePreviewController = [[MLBFilePreviewController alloc] init];
+            filePreviewController.hidesBottomBarWhenPushed = YES;//liman
             filePreviewController.fileInfo = fileInfo;
             return filePreviewController;
         }

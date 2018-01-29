@@ -317,7 +317,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (self.tableView.isEditing) { return; }
     self.tableView.editing = YES;
     self.editItem.title = [NSBundle mlb_localizedStringForKey:@"cancel"];
-    self.editItem.style = UIBarButtonItemStyleDone;
+    self.editItem.style = UIBarButtonItemStylePlain;
     if (self.searchController) {
         self.searchController.searchBar.userInteractionEnabled = NO;
         self.searchController.searchBar.alpha = 0.4;

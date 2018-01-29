@@ -22,7 +22,7 @@ NSString *const MLBFileTableViewCellReuseIdentifier = @"MLBFileCell";
 }
 
 - (void)setupViews {
-    self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+//    self.textLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     
     //liman
     self.backgroundColor = [UIColor blackColor];

@@ -186,7 +186,7 @@
     NSError *error;
     NSDictionary<NSString *, id> *attributes = [NSFileManager.defaultManager attributesOfItemAtPath:URL.path error:&error];
     if (error) {
-        NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//        NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
     }
     
     return attributes;
@@ -207,7 +207,7 @@
                 [fileInfos addObject:fileInfo];
             }
         } else {
-            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     
@@ -228,7 +228,7 @@
                 count++;
             }
         } else {
-            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
+//            NSLog(@"%@, error: %@", NSStringFromSelector(_cmd), error.localizedDescription);
         }
     }
     

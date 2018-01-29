@@ -12,8 +12,9 @@
 #import <WebKit/WebKit.h>
 #import "Sandboxer-Header.h"
 #import "Sandboxer.h"
+#import "NSBundle+Sandboxer.h"
 
-@interface MLBFilePreviewController () <QLPreviewControllerDataSource, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
+@interface MLBFilePreviewController () </*QLPreviewControllerDataSource, */WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 //@property (strong, nonatomic) QLPreviewController *previewController;
 @property (strong, nonatomic) WKWebView *wkWebView;
@@ -73,6 +74,8 @@
 #pragma mark - Private Methods
 
 - (void)setupViews {
+    //remove by Author
+    
 //    self.previewController = [[QLPreviewController alloc] init];
 //    [self addChildViewController:self.previewController];
 //    [self.previewController willMoveToParentViewController:self];
@@ -100,11 +103,17 @@
                 break;
             }
             default:
+                //copyied by liman
+                self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
+                self.textView.editable = NO;
+                self.textView.alwaysBounceVertical = YES;
+                [self.view addSubview:self.textView];
                 break;
         }
     }
     
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideNavigationBar)]];
+    //liman
+//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideNavigationBar)]];
     
     self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.activityIndicatorView];
@@ -124,26 +133,41 @@
                 [self.activityIndicatorView startAnimating];
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];
-                    NSError *error;
-                    NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:&error] description];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self.activityIndicatorView stopAnimating];
-                        self.textView.text = content;
-                    });
+                    
+                    if (!data) {
+                        //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by liman
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
+                        });
+                    }else{
+                        NSError *error;
+                        NSString *content = [[NSPropertyListSerialization propertyListWithData:data options:kNilOptions format:nil error:&error] description];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.activityIndicatorView stopAnimating];
+                            //liman
+                            if (error) {
+                                self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
+                            }else{
+                                self.textView.text = content;
+                            }
+                        });
+                    }
                 });
                 break;
             }
             default:
+                //liman
+                self.textView.text = [NSBundle mlb_localizedStringForKey:@"unable_preview"];
                 break;
         }
     }
 }
 
 #pragma mark - Action
-
-- (void)showOrHideNavigationBar {
-    [self.navigationController setNavigationBarHidden:!self.navigationController.isNavigationBarHidden animated:YES];
-}
+//liman
+//- (void)showOrHideNavigationBar {
+//    [self.navigationController setNavigationBarHidden:!self.navigationController.isNavigationBarHidden animated:YES];
+//}
 
 - (void)sharingAction {
     if (![Sandboxer shared].isShareable) { return; }
@@ -168,35 +192,33 @@
     return self.view;
 }
 
-#pragma mark - QLPreviewControllerDataSource
-
-- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
-    return 1;
-}
-
-- (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
-    return self.fileInfo.URL;
-}
+//#pragma mark - QLPreviewControllerDataSource
+//- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
+//    return 1;
+//}
+//- (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
+//    return self.fileInfo.URL;
+//}
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView startAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+//    NSLog(@"%@", NSStringFromSelector(_cmd));
     [self.activityIndicatorView stopAnimating];
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
+//    NSLog(@"%@, error = %@", NSStringFromSelector(_cmd), error);
     [self.activityIndicatorView stopAnimating];
 }
 

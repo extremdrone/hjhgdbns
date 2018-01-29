@@ -15,7 +15,7 @@
 
 @property (nonatomic, assign, getter=isSystemFilesHidden) BOOL systemFilesHidden; // Default is YES
 @property (nonatomic, copy) NSURL *homeFileURL; // Default is Home Directory
-@property (nonatomic, copy) NSString *homeTitle; // Default is `Home`
+@property (nonatomic, copy) NSString *homeTitle; // Default is `Sandbox`
 
 @property (nonatomic, assign, getter=isExtensionHidden) BOOL extensionHidden; // Default is NO
 

@@ -38,8 +38,7 @@ class LogTabBarViewController: UITabBarController {
         Sandboxer.shared.isFileDeletable = true
         Sandboxer.shared.isDirectoryDeletable = true
         guard let sandboxer = Sandboxer.shared.homeDirectoryNavigationController() else {return}
-        let customTabBarItem:UITabBarItem = UITabBarItem.init(title: sandboxer.title, image: UIImage.init(named: "DebugMan_sandbox"), selectedImage: UIImage.init(named: "DebugMan_sandbox"))
-        sandboxer.tabBarItem = customTabBarItem
+        sandboxer.tabBarItem = UITabBarItem.init(title: "Sandbox", image: UIImage.init(named: "DebugMan_sandbox"), selectedImage: UIImage.init(named: "DebugMan_sandbox"))
         
         self.viewControllers = [logs, network, app, sandboxer]
         

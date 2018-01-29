@@ -152,14 +152,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)registerForPreviewing {
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
-        if (@available(iOS 9.0, *)) {
-            if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-                [self registerForPreviewingWithDelegate:self sourceView:self.view];
-            }
-        } else {
-            // Fallback on earlier versions
+    if (@available(iOS 9.0, *)) {
+        if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+            [self registerForPreviewingWithDelegate:self sourceView:self.view];
         }
+    } else {
+        // Fallback on earlier versions //do nothing by author
     }
 }
 
@@ -371,14 +369,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     NSInteger directoryCount = 0;
     [self getDeletableFileCount:&fileCount directoryCount:&directoryCount];
     NSString *message = [self messageForDeleteWithFileCount:fileCount directoryCount:directoryCount];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
-            [self deleteAllFiles];
-        }];
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteAllAlertViewTag] show];
-    }
+    
+    UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
+        [self deleteAllFiles];
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)deleteSelectedFilesAction {
@@ -396,14 +391,11 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     }
     
     NSString *message = [self messageForDeleteWithFileCount:fileCount directoryCount:directoryCount];
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-        UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
-            [self deleteSelectedFiles];
-        }];
-        [self presentViewController:alertController animated:YES completion:nil];
-    } else {
-        [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteSelectedAlertViewTag] show];
-    }
+    
+    UIAlertController *alertController = [self alertControllerForDeleteWithMessage:message deleteHandler:^(UIAlertAction *action) {
+        [self deleteSelectedFiles];
+    }];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)deleteAllFiles {
@@ -520,16 +512,12 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [message appendString:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_single_file"]];
         }
         
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_cancel"] style:UIAlertActionStyleCancel handler:nil]];
-            [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_delete"] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                [self deleteSelectedFile];
-            }]];
-            [self presentViewController:alertController animated:YES completion:nil];
-        } else {
-            [[self alertViewForDeleteWithMessage:message tag:kMLBDeleteAlertViewTag] show];
-        }
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_cancel"] style:UIAlertActionStyleCancel handler:nil]];
+        [alertController addAction:[UIAlertAction actionWithTitle:[NSBundle mlb_localizedStringForKey:@"sure_to_delete_delete"] style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self deleteSelectedFile];
+        }]];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
 }
 
@@ -621,12 +609,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     detailViewController.preferredContentSize = CGSizeZero;
     
     // Set the source rect to the cell frame, so surrounding elements are blurred.
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"9.0")) {
-        if (@available(iOS 9.0, *)) {
-            previewingContext.sourceRect = cell.frame;
-        } else {
-            // Fallback on earlier versions
-        }
+    if (@available(iOS 9.0, *)) {
+        previewingContext.sourceRect = cell.frame;
+    } else {
+        // Fallback on earlier versions //do nothing by author
     }
     
     return detailViewController;

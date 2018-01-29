@@ -16,7 +16,6 @@
 @interface MLBFilePreviewController () <QLPreviewControllerDataSource, UIWebViewDelegate, WKNavigationDelegate, WKUIDelegate, UIDocumentInteractionControllerDelegate>
 
 //@property (strong, nonatomic) QLPreviewController *previewController;
-@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) WKWebView *wkWebView;
 
 @property (strong, nonatomic) UITextView *textView;
@@ -35,7 +34,6 @@
     [super viewDidLoad];
 
     self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
-//    self.view.backgroundColor = [UIColor whiteColor];
     
     [self initDatas];
     [self setupViews];
@@ -53,10 +51,6 @@
 //    self.previewController.view.frame = self.view.bounds;
     if (self.wkWebView) {
         self.wkWebView.frame = self.view.bounds;
-    }
-    
-    if (self.webView) {
-        self.webView.frame = self.view.bounds;
     }
     
     if (self.textView) {
@@ -98,17 +92,10 @@
     }
     
     if (self.fileInfo.isCanPreviewInWebView) {
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            self.wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-            self.wkWebView.backgroundColor = [UIColor whiteColor];
-            self.wkWebView.navigationDelegate = self;
-            [self.view addSubview:self.wkWebView];
-        } else {
-            self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-            self.webView.backgroundColor = [UIColor whiteColor];
-            self.webView.delegate = self;
-            [self.view addSubview:self.webView];
-        }
+        self.wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+        self.wkWebView.backgroundColor = [UIColor whiteColor];
+        self.wkWebView.navigationDelegate = self;
+        [self.view addSubview:self.wkWebView];
     } else {
         switch (self.fileInfo.type) {
             case MLBFileTypePList: {
@@ -131,14 +118,11 @@
 
 - (void)loadFile {
     if (self.fileInfo.isCanPreviewInWebView) {
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0")) {
-            if (@available(iOS 9.0, *)) {
-                [self.wkWebView loadFileURL:self.fileInfo.URL allowingReadAccessToURL:self.fileInfo.URL];
-            } else {
-                // Fallback on earlier versions
-            }
+        if (@available(iOS 9.0, *)) {
+            [self.wkWebView loadFileURL:self.fileInfo.URL allowingReadAccessToURL:self.fileInfo.URL];
         } else {
-            [self.webView loadRequest:[NSURLRequest requestWithURL:self.fileInfo.URL]];
+            // Fallback on earlier versions
+            [self.wkWebView loadRequest:[NSURLRequest requestWithURL:self.fileInfo.URL]];
         }
     } else {
         switch (self.fileInfo.type) {

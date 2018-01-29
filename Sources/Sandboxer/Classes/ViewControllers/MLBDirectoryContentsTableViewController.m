@@ -309,9 +309,9 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 #pragma mark - Action
 
-- (void)dismissAction {
-    [[Sandboxer shared] trigger];
-}
+//- (void)dismissAction {
+//    [[Sandboxer shared] trigger];
+//}
 
 - (void)editAction {
     if (!self.tableView.isEditing) {

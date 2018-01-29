@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = self.fileInfo.displayName.stringByDeletingPathExtension;
+    self.title = self.fileInfo.displayName;
     
     [self setupViews];
     [self loadFile];

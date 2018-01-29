@@ -40,7 +40,8 @@ class LogTabBarViewController: UITabBarController {
         guard let sandboxer = Sandboxer.shared.homeDirectoryNavigationController() else {return}
         sandboxer.tabBarItem = UITabBarItem.init(title: "Sandbox", image: UIImage.init(named: "DebugMan_sandbox"), selectedImage: UIImage.init(named: "DebugMan_sandbox"))
         
-        self.viewControllers = [logs, network, app, sandboxer]
+        
+        self.viewControllers = [logs, network, sandboxer, app]
         
         
         

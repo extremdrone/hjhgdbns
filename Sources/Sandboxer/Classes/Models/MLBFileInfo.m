@@ -43,6 +43,11 @@
                 self.modificationDateText = [NSString stringWithFormat:@"[%@] %@", [SandboxerHelper fileModificationDateTextWithDate:self.attributes.fileModificationDate], [SandboxerHelper sizeOfFile:URL.path]];
             }
         }
+        
+        //liman
+        if ([self.modificationDateText containsString:@"[] "]) {
+            self.modificationDateText = [[self.modificationDateText mutableCopy] stringByReplacingOccurrencesOfString:@"[] " withString:@""];
+        }
     }
     
     return self;

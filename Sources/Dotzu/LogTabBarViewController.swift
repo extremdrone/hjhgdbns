@@ -14,7 +14,7 @@ class LogTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = Color.mainGreen
+        self.tabBar.tintColor = Color.mainGreen
         
         setChildControllers()
         
@@ -46,14 +46,13 @@ class LogTabBarViewController: UITabBarController {
         //3.
         self.viewControllers = [logs, network, sandboxer, app]
         
-        
-        
         //4.添加额外的控制器
         guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {return}
         
         for vc in tabBarControllers {
             
             let nav = UINavigationController.init(rootViewController: vc)
+            nav.navigationBar.barTintColor = UIColor.init(hexString: "#1f2124")
             
             //****** 以下代码从LogNavigationViewController.swift复制 ******
             nav.navigationBar.isTranslucent = false
@@ -72,17 +71,14 @@ class LogTabBarViewController: UITabBarController {
             nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
             //****** 以上代码从LogNavigationViewController.swift复制 ******
             
-            nav.navigationBar.barTintColor = UIColor.init(hexString: "#1f2124")
-            self.viewControllers?.append(nav)
+            self.addChildViewController(nav)
         }
     }
-    
     
     //MARK: - target action
     @objc func exit() {
         dismiss(animated: true, completion: nil)
     }
-    
     
     //MARK: - UITabBarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem)
@@ -94,5 +90,12 @@ class LogTabBarViewController: UITabBarController {
                 LogsSettings.shared.tabBarSelectItem = index
             }
         }
+    }
+    
+    //MARK: - show more than 5 tabs by liman
+    override var traitCollection: UITraitCollection {
+        let realTraits = super.traitCollection
+        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
     }
 }

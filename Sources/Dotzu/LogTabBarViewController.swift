@@ -14,15 +14,14 @@ class LogTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBar.tintColor = Color.mainGreen
+        if let window = UIApplication.shared.delegate?.window {
+            window?.endEditing(true)
+        }
         
         setChildControllers()
         
         self.selectedIndex = LogsSettings.shared.tabBarSelectItem
-        
-        if let window = UIApplication.shared.delegate?.window {
-            window?.endEditing(true)
-        }
+        self.tabBar.tintColor = Color.mainGreen
     }
     
     //MARK: - private
@@ -44,10 +43,13 @@ class LogTabBarViewController: UITabBarController {
         sandboxer.tabBarItem.image = UIImage.init(named: "DebugMan_sandbox", in: Bundle.init(for: DebugMan.self), compatibleWith: nil)
         
         //3.
-        self.viewControllers = [logs, network, sandboxer, app]
+        guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {
+            self.viewControllers = [logs, network, sandboxer, app]
+            return
+        }
         
         //4.添加额外的控制器
-        guard let tabBarControllers = LogsSettings.shared.tabBarControllers else {return}
+        var temp = [logs, network, sandboxer, app]
         
         for vc in tabBarControllers {
             
@@ -71,8 +73,10 @@ class LogTabBarViewController: UITabBarController {
             nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
             //****** 以上代码从LogNavigationViewController.swift复制 ******
             
-            self.addChildViewController(nav)
+            temp.append(nav)
         }
+        
+        self.viewControllers = temp
     }
     
     //MARK: - target action

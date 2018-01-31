@@ -112,6 +112,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)setupViews {
     
     //liman
+    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    closeItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
+
+    //liman
     if ([Sandbox shared].isFileDeletable || [Sandbox shared].isDirectoryDeletable) {
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -120,10 +124,19 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         button.frame = CGRectMake(0, 0, 56, 34);
         [button setTitle:@"     Edit" forState:UIControlStateNormal];
         [button addTarget:self action:@selector(editAction) forControlEvents:UIControlEventTouchUpInside];
-        
         self.editItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-        self.navigationItem.rightBarButtonItem = self.editItem;
+        
+        if (!self.homeDirectory) {
+            self.navigationItem.rightBarButtonItems = @[closeItem, self.editItem];
+        }else{
+            self.navigationItem.rightBarButtonItem = self.editItem;
+        }
+    }else{
+        if (!self.homeDirectory) {
+            self.navigationItem.rightBarButtonItem = closeItem;
+        }
     }
+    
     
     
     self.tableView.allowsMultipleSelectionDuringEditing = YES;
@@ -137,7 +150,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             [self registerForPreviewingWithDelegate:self sourceView:self.view];
         }
     } else {
-        // Fallback on earlier versions //do nothing by author
+        // Fallback on earlier versions
+        // do nothing by author
     }
 }
 
@@ -163,19 +177,16 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (UIViewController *)viewControllerWithFileInfo:(MLBFileInfo *)fileInfo {
     if (fileInfo.isDirectory) {
         SandboxViewController *sandboxViewController = [[SandboxViewController alloc] init];
-        sandboxViewController.hidesBottomBarWhenPushed = YES;//liman
+//        sandboxViewController.hidesBottomBarWhenPushed = YES;//liman
         sandboxViewController.fileInfo = fileInfo;
         return sandboxViewController;
     } else {
         if ([Sandbox shared].isShareable && fileInfo.isCanPreviewInQuickLook) {
-//            NSLog(@"Quick Look can preview this file");
             self.previewingFileInfo = fileInfo;
-            
             QLPreviewController *previewController = [[QLPreviewController alloc] init];
             previewController.dataSource = self;
             return previewController;
         } else {
-//            NSLog(@"Quick Look can not preview this file");
             FilePreviewController *filePreviewController = [[FilePreviewController alloc] init];
             filePreviewController.hidesBottomBarWhenPushed = YES;//liman
             filePreviewController.fileInfo = fileInfo;
@@ -539,7 +550,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     if (@available(iOS 9.0, *)) {
         previewingContext.sourceRect = cell.frame;
     } else {
-        // Fallback on earlier versions //do nothing by author
+        // Fallback on earlier versions
+        // do nothing by author
     }
     
     return detailViewController;

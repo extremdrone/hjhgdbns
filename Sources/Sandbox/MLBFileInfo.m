@@ -178,6 +178,16 @@
     return NO;
 }
 
+#pragma mark - helper
+
+//按照时间排序 by liman
++ (NSMutableArray<MLBFileInfo *> *)sortedMLBFileInfoArray:(NSMutableArray<MLBFileInfo *> *)array
+{
+    return [[[array copy] sortedArrayUsingComparator:^NSComparisonResult(MLBFileInfo  *_Nonnull obj1, MLBFileInfo  *_Nonnull obj2) {
+        return [obj1.attributes.fileModificationDate compare:obj2.attributes.fileModificationDate ?: [NSDate date]];
+    }] mutableCopy];
+}
+
 #pragma mark - Public Methods
 
 + (NSDictionary<NSString *, id> *)attributesWithFileURL:(NSURL *)URL {
@@ -209,7 +219,8 @@
         }
     }
     
-    return fileInfos;
+    //按照时间排序 by liman
+    return [self sortedMLBFileInfoArray:fileInfos];
 }
 
 + (NSUInteger)contentCountOfDirectoryAtURL:(NSURL *)URL {

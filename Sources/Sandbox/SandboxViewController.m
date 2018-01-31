@@ -22,7 +22,6 @@
 @property (strong, nonatomic) MLBFileInfo *previewingFileInfo;
 @property (strong, nonatomic) MLBFileInfo *deletingFileInfo;
 
-@property (strong, nonatomic) UIBarButtonItem *refreshItem;
 @property (strong, nonatomic) UIBarButtonItem *editItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteAllItem;
 @property (strong, nonatomic) UIBarButtonItem *deleteItem;
@@ -156,11 +155,9 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (void)loadDirectoryContents {
-    self.refreshItem.enabled = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.dataSource = [MLBFileInfo contentsOfDirectoryAtURL:self.fileInfo.URL];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.refreshItem.enabled = YES;
             [self.tableView reloadData];
             [self updateToolbarItems];
             if (_isFirstAppear) {

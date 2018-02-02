@@ -15,7 +15,7 @@ public class DebugManSettings {
     
     public var firstIn: String? = nil {
         didSet {
-            UserDefaults.standard.set(serverURL, forKey: "firstIn_DebugMan")
+            UserDefaults.standard.set(firstIn, forKey: "firstIn_DebugMan")
             UserDefaults.standard.synchronize()
         }
     }
@@ -29,6 +29,12 @@ public class DebugManSettings {
             }else{
                 StoreManager.shared.resetCrashs()
             }
+        }
+    }
+    public var visible: Bool {
+        didSet {
+            UserDefaults.standard.set(visible, forKey: "visible_DebugMan")
+            UserDefaults.standard.synchronize()
         }
     }
     public var showBallAndWindow: Bool {
@@ -119,6 +125,7 @@ public class DebugManSettings {
     {
         firstIn = UserDefaults.standard.string(forKey: "firstIn_DebugMan")
         serverURL = UserDefaults.standard.string(forKey: "serverURL_DebugMan")
+        visible = UserDefaults.standard.bool(forKey: "visible_DebugMan")
         showBallAndWindow = UserDefaults.standard.bool(forKey: "showBallAndWindow_DebugMan")
         recordCrash = UserDefaults.standard.bool(forKey: "recordCrash_DebugMan")
         tabBarSelectItem = UserDefaults.standard.integer(forKey: "tabBarSelectItem_DebugMan")

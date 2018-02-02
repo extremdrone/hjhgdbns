@@ -225,7 +225,6 @@
 		EA44B9871FE140D600DF7FF6 /* CrashListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */; };
 		EA44B9881FE140D600DF7FF6 /* ListCrashesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */; };
 		EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */; };
-		EA44B98A1FE140D600DF7FF6 /* DebugManSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92D1FE140D600DF7FF6 /* DebugManSettings.swift */; };
 		EA44B98B1FE140D600DF7FF6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92E1FE140D600DF7FF6 /* Device.swift */; };
 		EA44B98C1FE140D600DF7FF6 /* LoggerCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */; };
 		EA44B98D1FE140D600DF7FF6 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B9301FE140D600DF7FF6 /* StoreManager.swift */; };
@@ -240,6 +239,7 @@
 		EA68B420201477EE00BA01C5 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B415201477EE00BA01C5 /* JxbMemoryHelper.m */; };
 		EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */; };
 		EA86A67A2014E1F700B20CF1 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */; };
+		EA8BFD002024051300F750E2 /* DebugManSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8BFCFF2024051300F750E2 /* DebugManSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -478,7 +478,6 @@
 		EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashListTableViewCell.swift; sourceTree = "<group>"; };
 		EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCrashesViewController.swift; sourceTree = "<group>"; };
 		EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationsTableViewController.swift; sourceTree = "<group>"; };
-		EA44B92D1FE140D600DF7FF6 /* DebugManSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugManSettings.swift; sourceTree = "<group>"; };
 		EA44B92E1FE140D600DF7FF6 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerCrash.swift; sourceTree = "<group>"; };
 		EA44B9301FE140D600DF7FF6 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
@@ -500,6 +499,7 @@
 		EA68B416201477EE00BA01C5 /* JxbHttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpDatasource.m; sourceTree = "<group>"; };
 		EA86A6782014E1F700B20CF1 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
 		EA86A6792014E1F700B20CF1 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
+		EA8BFCFF2024051300F750E2 /* DebugManSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugManSettings.swift; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -860,7 +860,6 @@
 				EA44B92A1FE140D600DF7FF6 /* CrashListTableViewCell.swift */,
 				EA44B92B1FE140D600DF7FF6 /* ListCrashesViewController.swift */,
 				EA44B92C1FE140D600DF7FF6 /* InformationsTableViewController.swift */,
-				EA44B92D1FE140D600DF7FF6 /* DebugManSettings.swift */,
 				EA44B92E1FE140D600DF7FF6 /* Device.swift */,
 				EA44B92F1FE140D600DF7FF6 /* LoggerCrash.swift */,
 				EA44B9301FE140D600DF7FF6 /* StoreManager.swift */,
@@ -876,6 +875,7 @@
 			children = (
 				EA44B9361FE140D600DF7FF6 /* DebugMan.h */,
 				EA44B93A1FE140D600DF7FF6 /* DebugMan.swift */,
+				EA8BFCFF2024051300F750E2 /* DebugManSettings.swift */,
 				EA6760A12005F0D000ADA56A /* DebugMan+Extensions.swift */,
 			);
 			path = Core;
@@ -1246,7 +1246,6 @@
 				EA44B9891FE140D600DF7FF6 /* InformationsTableViewController.swift in Sources */,
 				EA68B41A201477EE00BA01C5 /* JxbHttpProtocol.m in Sources */,
 				EA06514D201DAED00020F6FB /* NetworkDetailModel.swift in Sources */,
-				EA44B98A1FE140D600DF7FF6 /* DebugManSettings.swift in Sources */,
 				EA68B41F201477EE00BA01C5 /* JxbDebugTool.m in Sources */,
 				EA44B98E1FE140D600DF7FF6 /* LoggerFormat.swift in Sources */,
 				EA1FF824201637B600E8ED27 /* NSData+DebugMan.m in Sources */,
@@ -1268,6 +1267,7 @@
 				EA44B9951FE140D600DF7FF6 /* DebugMan.swift in Sources */,
 				EA68B421201477EE00BA01C5 /* JxbHttpDatasource.m in Sources */,
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
+				EA8BFD002024051300F750E2 /* DebugManSettings.swift in Sources */,
 				EA065150201DAED00020F6FB /* NetworkCell.swift in Sources */,
 				EA06514E201DAED00020F6FB /* NetworkViewController.swift in Sources */,
 				EA1FF826201637B600E8ED27 /* UIWindow+DebugMan.m in Sources */,

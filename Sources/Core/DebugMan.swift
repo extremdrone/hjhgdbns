@@ -41,7 +41,6 @@ import UIKit
             DebugManSettings.shared.ignoredURLs = ignoredURLs
         }
         
-        
         if DebugManSettings.shared.firstIn == nil { //first launch
             DebugManSettings.shared.firstIn = ""
             DebugManSettings.shared.showBallAndWindow = true
@@ -57,8 +56,8 @@ import UIKit
         Logger.shared.enable = true
         
         DebugManSettings.shared.recordCrash = recordCrash
+        DebugManSettings.shared.visible = false
     }
-    
     
     //MARK: - 暂时没用用到
 //    @objc public func disable() {
@@ -68,9 +67,9 @@ import UIKit
 //        LoggerCrash.shared.enable = false
 //    }
  
-    
     //MARK: - init method
     @objc public static let shared = DebugMan()
+    
     private override init() {
         super.init()
         
@@ -82,13 +81,19 @@ import UIKit
         let _ = StoreManager.shared
     }
     
-    //MARK: - deinit method
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
+    
+    
     //MARK: - notification method
     @objc private func shake() {
+        
+        if DebugManSettings.shared.visible == true {
+            return
+        }
+        
         DebugManSettings.shared.showBallAndWindow = !DebugManSettings.shared.showBallAndWindow
     }
 }

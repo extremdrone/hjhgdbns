@@ -36,7 +36,8 @@ public class Logger {
         return "\(fileName)[\(line)]\(function):\n"
     }
 
-    fileprivate func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
+    
+    func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"

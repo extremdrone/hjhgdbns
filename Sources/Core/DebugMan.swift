@@ -65,6 +65,17 @@ import UIKit
 //        Logger.shared.enable = false
 //        LoggerCrash.shared.enable = false
 //    }
+    
+    //MARK: - DebugManLog for Objective-C
+    @objc public static func Log(_ file: String = #file,
+                               _ function: String = #function,
+                               _ line: Int = #line,
+                               _ message: Any,
+                               _ color: UIColor? = nil) {
+        Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+    }
+    
+    
  
     //MARK: - init method
     @objc public static let shared = DebugMan()

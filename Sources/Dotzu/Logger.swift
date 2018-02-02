@@ -10,11 +10,11 @@ import Foundation
 
 //MARK: - ****************** Usage of DebugManLog ******************
 
-/// file: logs file (打印日志所在的文件名) |
-/// function: logs function (打印日志所在的函数名) |
-/// line: logs line (打印日志所在的行数) |
-/// message: logs content (打印日志的内容) |
-/// color: logs color, default is white (打印日志的颜色, 默认白色) |
+/// file: logs file
+/// function: logs function
+/// line: logs line
+/// message: logs content
+/// color: logs color, default is white
 public func DebugManLog<T>(_ file: String = #file,
                            _ function: String = #function,
                            _ line: Int = #line,

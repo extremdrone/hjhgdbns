@@ -32,8 +32,7 @@ public func DebugManLog<T>(_ file: String = #file,
 public class Logger: LogGenerator {
     
     static let shared = Logger()
-    private let queue = DispatchQueue(label: "log.queue.DebugMan")
-
+    
     var enable: Bool = true
 
     fileprivate func parseFileInfo(file: String?, function: String?, line: Int?) -> String? {
@@ -50,16 +49,20 @@ public class Logger: LogGenerator {
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"
         }
-
-        Logger.shared.queue.async {
+        
+        
+        //liman
+        DispatchQueue.global().async {
+            //子线程
             let newLog = Log(content: stringContent, color: color, fileInfo: fileInfo)
             let format = LoggerFormat.format(newLog)
             Swift.print(format.str)
             StoreManager.shared.addLog(newLog)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugMan"), object: nil, userInfo: nil)
+            
+            DispatchQueue.main.async {
+                //主线程
+                NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DebugMan"), object: nil, userInfo: nil)
+            }
         }
     }
 }

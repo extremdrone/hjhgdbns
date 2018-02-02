@@ -13,7 +13,12 @@
 #import "MethodSwizzling.h"
 
 #define myProtocolKey   @"JxbHttpProtocol"
-#define GCD_DELAY_AFTER(time, block) dispatch_after(dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), dispatch_get_main_queue(), block)
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
 
 typedef NSURLSessionConfiguration*(*SessionConfigConstructor)(id,SEL);
 static SessionConfigConstructor orig_defaultSessionConfiguration;
@@ -154,9 +159,9 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
     
     if ([[JxbHttpDatasource shareInstance] addHttpRequset:model])
     {
-        GCD_DELAY_AFTER(0.1, ^{
+        dispatch_main_async_safe(^{
             [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadHttp_DebugMan" object:nil userInfo:@{@"statusCode":model.statusCode}];
-        });
+        })
     }
 }
 

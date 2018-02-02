@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: - ***** Usage of DebugManLog *****
+//MARK: - ***** Usage of DebugManLog for Swift *****
 
 /// file: logs file
 /// function: logs function

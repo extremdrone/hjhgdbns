@@ -58,7 +58,8 @@ import UIKit
         DebugManSettings.shared.visible = false
     }
     
-    //MARK: - 暂时没用用到
+    
+    //暂时没用用到
 //    @objc public func disable() {
 //        DotzuManager.shared.disable()
 //        JxbDebugTool.shareInstance().disable()
@@ -66,17 +67,23 @@ import UIKit
 //        LoggerCrash.shared.enable = false
 //    }
     
-    //MARK: - DebugManLog for Objective-C
+    
+    //MARK: - ***** Usage of DebugManLog for Objective-C *****
+    
+    /// file: logs file
+    /// function: logs function
+    /// line: logs line
+    /// message: logs content
+    /// color: logs color, default is white
     @objc public static func Log(_ file: String = #file,
-                               _ function: String = #function,
-                               _ line: Int = #line,
-                               _ message: Any,
-                               _ color: UIColor? = nil) {
+                                 _ function: String = #function,
+                                 _ line: Int = #line,
+                                 _ message: Any,
+                                 _ color: UIColor? = nil) {
         Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
     }
     
     
- 
     //MARK: - init method
     @objc public static let shared = DebugMan()
     

@@ -209,7 +209,6 @@
 		EA44B7911FE13ECD00DF7FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA44B78F1FE13ECD00DF7FF6 /* LaunchScreen.storyboard */; };
 		EA44B9771FE140D600DF7FF6 /* LogTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */; };
 		EA44B9781FE140D600DF7FF6 /* LogCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */; };
-		EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */; };
 		EA44B97A1FE140D600DF7FF6 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91D1FE140D600DF7FF6 /* Log.swift */; };
 		EA44B97B1FE140D600DF7FF6 /* ApplicationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */; };
 		EA44B97C1FE140D600DF7FF6 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA44B91F1FE140D600DF7FF6 /* Logger.swift */; };
@@ -462,7 +461,6 @@
 		EA44B84D1FE1400600DF7FF6 /* DebugMan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DebugMan-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTabBarViewController.swift; sourceTree = "<group>"; };
 		EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogCrash.swift; sourceTree = "<group>"; };
-		EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogGenerator.swift; sourceTree = "<group>"; };
 		EA44B91D1FE140D600DF7FF6 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInformation.swift; sourceTree = "<group>"; };
 		EA44B91F1FE140D600DF7FF6 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -846,7 +844,6 @@
 				EA44B9231FE140D600DF7FF6 /* LogsViewController.swift */,
 				EA44B91A1FE140D600DF7FF6 /* LogTabBarViewController.swift */,
 				EA44B91B1FE140D600DF7FF6 /* LogCrash.swift */,
-				EA44B91C1FE140D600DF7FF6 /* LogGenerator.swift */,
 				EA44B91D1FE140D600DF7FF6 /* Log.swift */,
 				EA44B91E1FE140D600DF7FF6 /* ApplicationInformation.swift */,
 				EA44B91F1FE140D600DF7FF6 /* Logger.swift */,
@@ -1226,7 +1223,6 @@
 				EA12A71420216C0600A5A53C /* Sandbox.m in Sources */,
 				EA44B9881FE140D600DF7FF6 /* ListCrashesViewController.swift in Sources */,
 				EA44B9821FE140D600DF7FF6 /* ManagerViewController.swift in Sources */,
-				EA44B9791FE140D600DF7FF6 /* LogGenerator.swift in Sources */,
 				EA44B9851FE140D600DF7FF6 /* DotzuManager.swift in Sources */,
 				EA44B97D1FE140D600DF7FF6 /* LogTableViewCell.swift in Sources */,
 				EA68B41C201477EE00BA01C5 /* JxbHttpModel.m in Sources */,

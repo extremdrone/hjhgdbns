@@ -21,20 +21,15 @@ public func DebugManLog<T>(_ file: String = #file,
                            _ message: T,
                            _ color: UIColor? = nil)
 {
-    if Logger.shared.enable {
-        Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
-    } else {
-        Swift.print(message)
-    }
+    Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
+//    Swift.print(message)
 }
 
 //MARK: -
-public class Logger: LogGenerator {
+public class Logger {
     
     static let shared = Logger()
     
-    var enable: Bool = true
-
     fileprivate func parseFileInfo(file: String?, function: String?, line: Int?) -> String? {
         guard let file = file, let function = function, let line = line, let fileName = file.components(separatedBy: "/").last else {return nil}
         
@@ -42,9 +37,6 @@ public class Logger: LogGenerator {
     }
 
     fileprivate func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
-        if !Logger.shared.enable {
-            return
-        }
         let fileInfo = parseFileInfo(file: file, function: function, line: line)
         let stringContent = message.reduce("") { result, next -> String in
             return "\(result)\(result.count > 0 ? " " : "")\(next)"

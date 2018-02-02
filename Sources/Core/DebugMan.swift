@@ -53,7 +53,6 @@ import UIKit
         }
         
         JxbDebugTool.shareInstance().enable()
-        Logger.shared.enable = true
         
         DebugManSettings.shared.recordCrash = recordCrash
         DebugManSettings.shared.visible = false

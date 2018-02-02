@@ -112,13 +112,7 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
     model.method = self.request.HTTPMethod;
     model.mineType = self.response.MIMEType;
     if (self.request.HTTPBody) {
-        NSData* data = self.request.HTTPBody;
-        if ([[JxbDebugTool shareInstance] isHttpRequestEncrypt]) {
-            if ([[JxbDebugTool shareInstance] delegate] && [[JxbDebugTool shareInstance].delegate respondsToSelector:@selector(decryptJson:)]) {
-                data = [[JxbDebugTool shareInstance].delegate decryptJson:self.request.HTTPBody];
-            }
-        }
-        model.requestData = data;
+        model.requestData = self.request.HTTPBody;
     }
     if (self.request.HTTPBodyStream) {//liman
         NSData* data = [NSData dataWithInputStream:self.request.HTTPBodyStream];

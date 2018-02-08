@@ -75,11 +75,12 @@ import UIKit
     /// line: logs line
     /// message: logs content
     /// color: logs color, default is white
-    @objc public static func Log(_ file: String = #file,
+    @objc public static func NSLog(_ file: String = #file,
                                  _ function: String = #function,
                                  _ line: Int = #line,
                                  _ message: Any,
                                  _ color: UIColor? = nil) {
+        Swift.print(message)
         Logger.shared.handleLog(file: file, function: function, line: line, message: message, color: color)
     }
     

@@ -416,12 +416,12 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 }
 
 - (NSURLSessionTaskState)state {
-    NSAssert(NO, @"State method should never be called in the actual dummy class");
+    //NSAssert(NO, @"State method should never be called in the actual dummy class");
     return NSURLSessionTaskStateCanceling;
 }
 
 - (void)af_resume {
-    NSAssert([self respondsToSelector:@selector(state)], @"Does not respond to state");
+    //NSAssert([self respondsToSelector:@selector(state)], @"Does not respond to state");
     NSURLSessionTaskState state = [self state];
     [self af_resume];
     
@@ -431,7 +431,7 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 }
 
 - (void)af_suspend {
-    NSAssert([self respondsToSelector:@selector(state)], @"Does not respond to state");
+    //NSAssert([self respondsToSelector:@selector(state)], @"Does not respond to state");
     NSURLSessionTaskState state = [self state];
     [self af_suspend];
     

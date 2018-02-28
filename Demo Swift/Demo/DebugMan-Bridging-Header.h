@@ -3,3 +3,4 @@
 //
 
 #import "DebugMan.h"
+#import "ASIHTTPRequestClient.h"

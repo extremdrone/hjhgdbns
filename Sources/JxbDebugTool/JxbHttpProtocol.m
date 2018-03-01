@@ -59,12 +59,11 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
 
 
 #pragma mark - protocol
-+ (void)load {//liman
-    orig_defaultSessionConfiguration = (SessionConfigConstructor)ReplaceMethod(
-                                                                               @selector(defaultSessionConfiguration),
-                                                                               (IMP)SWHttp_defaultSessionConfiguration,
-                                                                               [NSURLSessionConfiguration class],
-                                                                               YES);
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        orig_defaultSessionConfiguration = (SessionConfigConstructor)ReplaceMethod(@selector(defaultSessionConfiguration), (IMP)SWHttp_defaultSessionConfiguration, [NSURLSessionConfiguration class], YES);
+    });
 }
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {

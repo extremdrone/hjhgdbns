@@ -6,9 +6,6 @@
 //  Copyright (c) 2014年 Jakey. All rights reserved.
 //
 
-//typedef void (^FailedBlock)(NSError *error);
-//typedef void (^ProgressBlock)(float progress);
-
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"

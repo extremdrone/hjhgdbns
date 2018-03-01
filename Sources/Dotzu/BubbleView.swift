@@ -1,5 +1,5 @@
 //
-//  LogHeadView.swift
+//  BubbleView.swift
 //  exampleWindow
 //
 //  Created by Remi Robert on 20/01/2017.
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 protocol LogHeadViewDelegate: class {
     func didTapLogHeadView()
@@ -15,7 +16,9 @@ protocol LogHeadViewDelegate: class {
 private let _width: CGFloat = 130/2
 private let _height: CGFloat = 130/2
 
-class LogHeadView: UIView {
+class BubbleView: UIView {
+    
+    var hasPerformedSetup: Bool = false//liman
     
     weak var delegate: LogHeadViewDelegate?
     
@@ -139,8 +142,14 @@ class LogHeadView: UIView {
         self.addSubview(_label)
         self.addSubview(_sublabel)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LogHeadView.tap))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(BubbleView.tap))
         self.addGestureRecognizer(tapGesture)
+        
+        //liman
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(BubbleView.longPress(sender:)))
+        self.addGestureRecognizer(longPress)
+        
+        tapGesture.require(toFail: longPress)
     }
     
     func changeSideDisplay() {
@@ -163,7 +172,7 @@ class LogHeadView: UIView {
         initLayer()
         
         //添加手势
-        let selector = #selector(LogHeadView.panDidFire(panner:))
+        let selector = #selector(BubbleView.panDidFire(panner:))
         let panGesture = UIPanGestureRecognizer(target: self, action: selector)
         self.addGestureRecognizer(panGesture)
         
@@ -216,6 +225,25 @@ class LogHeadView: UIView {
     
     @objc func tap() {
         delegate?.didTapLogHeadView()
+    }
+    
+    @objc func longPress(sender: UILongPressGestureRecognizer) {
+        if (sender.state == .began) {
+            
+            guard let cls = NSClassFromString("UIDebuggingInformationOverlay") as? UIWindow.Type else {return}
+            
+            if !self.hasPerformedSetup {
+                cls.perform(NSSelectorFromString("prepareDebuggingOverlay"))
+                self.hasPerformedSetup = true
+            }
+            
+            let tapGesture = UITapGestureRecognizer()
+            tapGesture.state = .ended
+            
+            let handlerCls = NSClassFromString("UIDebuggingInformationOverlayInvokeGestureHandler") as! NSObject.Type
+            let handler = handlerCls.perform(NSSelectorFromString("mainHandler")).takeUnretainedValue()
+            let _ = handler.perform(NSSelectorFromString("_handleActivationGesture:"), with: tapGesture)
+        }
     }
     
     @objc func panDidFire(panner: UIPanGestureRecognizer) {

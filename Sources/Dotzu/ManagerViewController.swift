@@ -10,7 +10,7 @@ import UIKit
 
 class ManagerViewController: UIViewController, LogHeadViewDelegate {
 
-    var logHeadView = LogHeadView(frame: CGRect(origin: LogHeadView.originalPosition, size: LogHeadView.size))
+    var logHeadView = BubbleView(frame: CGRect(origin: BubbleView.originalPosition, size: BubbleView.size))
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

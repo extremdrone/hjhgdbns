@@ -10,12 +10,12 @@ import UIKit
 
 public class DotzuManager: NSObject {
     public static let shared = DotzuManager()
-    var window: ManagerWindow
+    var window: InvisibleWindow
     let vc = ManagerViewController()
     var displayedList = false
 
     override init() {
-        self.window = ManagerWindow(frame: UIScreen.main.bounds)
+        self.window = InvisibleWindow(frame: UIScreen.main.bounds)
         super.init()
     }
 
@@ -36,7 +36,7 @@ public class DotzuManager: NSObject {
     }
 }
 
-extension DotzuManager: ManagerWindowDelegate {
+extension DotzuManager: DebugManWindowDelegate {
     func isPointEvent(point: CGPoint) -> Bool {
         return self.vc.shouldReceive(point: point)
     }

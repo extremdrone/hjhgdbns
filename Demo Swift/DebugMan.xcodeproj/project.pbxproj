@@ -48,7 +48,7 @@
 		EA9422542046474E000D1DE8 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421552046474E000D1DE8 /* LogsViewController.swift */; };
 		EA9422552046474E000D1DE8 /* ManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421562046474E000D1DE8 /* ManagerViewController.swift */; };
 		EA9422562046474E000D1DE8 /* DetailCrashTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421572046474E000D1DE8 /* DetailCrashTableViewController.swift */; };
-		EA9422572046474E000D1DE8 /* ManagerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421582046474E000D1DE8 /* ManagerWindow.swift */; };
+		EA9422572046474E000D1DE8 /* InvisibleWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421582046474E000D1DE8 /* InvisibleWindow.swift */; };
 		EA9422582046474E000D1DE8 /* DotzuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421592046474E000D1DE8 /* DotzuManager.swift */; };
 		EA9422592046474E000D1DE8 /* LogNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94215A2046474E000D1DE8 /* LogNavigationViewController.swift */; };
 		EA94225A2046474E000D1DE8 /* CrashListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94215B2046474E000D1DE8 /* CrashListTableViewCell.swift */; };
@@ -251,7 +251,7 @@
 		EA9423202046474F000D1DE8 /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94222F2046474E000D1DE8 /* NetworkDetailCell.swift */; };
 		EA9423212046474F000D1DE8 /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9422302046474E000D1DE8 /* NetworkDetailModel.swift */; };
 		EA94232D2046474F000D1DE8 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94224A2046474E000D1DE8 /* MethodSwizzling.m */; };
-		EAB67C892047A0110052FE56 /* LogHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C882047A0110052FE56 /* LogHeadView.swift */; };
+		EAB67C892047A0110052FE56 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C882047A0110052FE56 /* BubbleView.swift */; };
 		EAB67C952047A02A0052FE56 /* JxbHttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C8B2047A02A0052FE56 /* JxbHttpProtocol.m */; };
 		EAB67C962047A02A0052FE56 /* JxbHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C8C2047A02A0052FE56 /* JxbHttpModel.m */; };
 		EAB67C972047A02A0052FE56 /* JxbDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C912047A02A0052FE56 /* JxbDebugTool.m */; };
@@ -263,6 +263,7 @@
 		EAB67CAA2047A2690052FE56 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C9F2047A2680052FE56 /* SandboxViewController.m */; };
 		EAB67CAB2047A2690052FE56 /* Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67CA02047A2680052FE56 /* Sandbox.m */; };
 		EAB67CAC2047A2690052FE56 /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67CA22047A2680052FE56 /* MLBFileInfo.m */; };
+		EAB67CB22047D4490052FE56 /* NSObject+UIDebuggingInformationOverlayInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67CB12047D4490052FE56 /* NSObject+UIDebuggingInformationOverlayInjector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -341,7 +342,7 @@
 		EA9421552046474E000D1DE8 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
 		EA9421562046474E000D1DE8 /* ManagerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerViewController.swift; sourceTree = "<group>"; };
 		EA9421572046474E000D1DE8 /* DetailCrashTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCrashTableViewController.swift; sourceTree = "<group>"; };
-		EA9421582046474E000D1DE8 /* ManagerWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerWindow.swift; sourceTree = "<group>"; };
+		EA9421582046474E000D1DE8 /* InvisibleWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvisibleWindow.swift; sourceTree = "<group>"; };
 		EA9421592046474E000D1DE8 /* DotzuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DotzuManager.swift; sourceTree = "<group>"; };
 		EA94215A2046474E000D1DE8 /* LogNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogNavigationViewController.swift; sourceTree = "<group>"; };
 		EA94215B2046474E000D1DE8 /* CrashListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashListTableViewCell.swift; sourceTree = "<group>"; };
@@ -552,7 +553,7 @@
 		EA9422302046474E000D1DE8 /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
 		EA94224A2046474E000D1DE8 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
 		EA94224B2046474E000D1DE8 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
-		EAB67C882047A0110052FE56 /* LogHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHeadView.swift; sourceTree = "<group>"; };
+		EAB67C882047A0110052FE56 /* BubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		EAB67C8B2047A02A0052FE56 /* JxbHttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpProtocol.m; sourceTree = "<group>"; };
 		EAB67C8C2047A02A0052FE56 /* JxbHttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpModel.m; sourceTree = "<group>"; };
 		EAB67C8D2047A02A0052FE56 /* JxbDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbDebugTool.h; sourceTree = "<group>"; };
@@ -575,6 +576,7 @@
 		EAB67CA42047A2680052FE56 /* FilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewController.h; sourceTree = "<group>"; };
 		EAB67CA52047A2680052FE56 /* Sandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandbox.h; sourceTree = "<group>"; };
 		EAB67CA62047A2680052FE56 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
+		EAB67CB12047D4490052FE56 /* NSObject+UIDebuggingInformationOverlayInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+UIDebuggingInformationOverlayInjector.m"; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -781,7 +783,7 @@
 				EA9421552046474E000D1DE8 /* LogsViewController.swift */,
 				EA9421562046474E000D1DE8 /* ManagerViewController.swift */,
 				EA9421572046474E000D1DE8 /* DetailCrashTableViewController.swift */,
-				EA9421582046474E000D1DE8 /* ManagerWindow.swift */,
+				EA9421582046474E000D1DE8 /* InvisibleWindow.swift */,
 				EA9421592046474E000D1DE8 /* DotzuManager.swift */,
 				EA94215A2046474E000D1DE8 /* LogNavigationViewController.swift */,
 				EA94215B2046474E000D1DE8 /* CrashListTableViewCell.swift */,
@@ -791,7 +793,7 @@
 				EA94215F2046474E000D1DE8 /* LoggerCrash.swift */,
 				EA9421602046474E000D1DE8 /* StoreManager.swift */,
 				EA9421612046474E000D1DE8 /* LoggerFormat.swift */,
-				EAB67C882047A0110052FE56 /* LogHeadView.swift */,
+				EAB67C882047A0110052FE56 /* BubbleView.swift */,
 				EA9421632046474E000D1DE8 /* Color.swift */,
 			);
 			path = Dotzu;
@@ -801,6 +803,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9421652046474E000D1DE8 /* DebugMan.h */,
+				EAB67CB12047D4490052FE56 /* NSObject+UIDebuggingInformationOverlayInjector.m */,
 				EA9421662046474E000D1DE8 /* DebugManSettings.swift */,
 				EA9421672046474E000D1DE8 /* DebugMan.swift */,
 				EA9421682046474E000D1DE8 /* DebugMan+Extensions.swift */,
@@ -1049,8 +1052,8 @@
 		EA9422492046474E000D1DE8 /* MethodSwizzling */ = {
 			isa = PBXGroup;
 			children = (
-				EA94224A2046474E000D1DE8 /* MethodSwizzling.m */,
 				EA94224B2046474E000D1DE8 /* MethodSwizzling.h */,
+				EA94224A2046474E000D1DE8 /* MethodSwizzling.m */,
 			);
 			path = MethodSwizzling;
 			sourceTree = "<group>";
@@ -1426,6 +1429,7 @@
 				EA94225D2046474E000D1DE8 /* Device.swift in Sources */,
 				EA94226C2046474E000D1DE8 /* NSURLRequest+DebugMan.m in Sources */,
 				EA94224C2046474E000D1DE8 /* LogTabBarViewController.swift in Sources */,
+				EAB67CB22047D4490052FE56 /* NSObject+UIDebuggingInformationOverlayInjector.m in Sources */,
 				EA3897DE2045348E00AC5494 /* ASIWebPageRequest.m in Sources */,
 				EA94226A2046474E000D1DE8 /* UIColor+DebugMan.m in Sources */,
 				EAB67C992047A02A0052FE56 /* JxbHttpDatasource.m in Sources */,
@@ -1447,7 +1451,7 @@
 				EA3897D32045348E00AC5494 /* ASIS3Request.m in Sources */,
 				EA9422562046474E000D1DE8 /* DetailCrashTableViewController.swift in Sources */,
 				EA94231F2046474F000D1DE8 /* NetworkDetailViewController.swift in Sources */,
-				EA9422572046474E000D1DE8 /* ManagerWindow.swift in Sources */,
+				EA9422572046474E000D1DE8 /* InvisibleWindow.swift in Sources */,
 				EA94224F2046474E000D1DE8 /* ApplicationInformation.swift in Sources */,
 				EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */,
 				EA9423212046474F000D1DE8 /* NetworkDetailModel.swift in Sources */,
@@ -1465,7 +1469,7 @@
 				EA3897C82045348E00AC5494 /* ASIDataCompressor.m in Sources */,
 				EA94231E2046474F000D1DE8 /* NetworkViewController.swift in Sources */,
 				EA9422582046474E000D1DE8 /* DotzuManager.swift in Sources */,
-				EAB67C892047A0110052FE56 /* LogHeadView.swift in Sources */,
+				EAB67C892047A0110052FE56 /* BubbleView.swift in Sources */,
 				EA3897DC2045348E00AC5494 /* ASINetworkQueue.m in Sources */,
 				EA9422532046474E000D1DE8 /* DeviceModel.swift in Sources */,
 				EA94225B2046474E000D1DE8 /* ListCrashesViewController.swift in Sources */,

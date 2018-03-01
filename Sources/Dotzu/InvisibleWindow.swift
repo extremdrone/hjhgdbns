@@ -1,5 +1,5 @@
 //
-//  ManagerWindow.swift
+//  InvisibleWindow.swift
 //  exampleWindow
 //
 //  Created by Remi Robert on 02/12/2016.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol ManagerWindowDelegate: class {
+protocol DebugManWindowDelegate: class {
     func isPointEvent(point: CGPoint) -> Bool
 }
 
-class ManagerWindow: UIWindow {
+class InvisibleWindow: UIWindow {
 
-    weak var delegate: ManagerWindowDelegate?
+    weak var delegate: DebugManWindowDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)

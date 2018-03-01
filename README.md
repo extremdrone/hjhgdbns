@@ -1,5 +1,5 @@
 <p align="center">
-  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/master/Sources/Resources/images/DebugMan_logo.png"/>
+  <img src ="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Sources/Resources/images/DebugMan_logo.png"/>
 </p>
 
 [![Travis CI](https://img.shields.io/badge/Build-Passed-green.svg)](https://travis-ci.org/liman123/DebugMan)

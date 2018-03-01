@@ -123,7 +123,7 @@ For More, See `Swift` and `Objective-C` demo Examples.
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/1.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/2.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/3.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/4.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/5.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/6.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/master/Screenshots/7.png" width="240">
+<img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/1.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/2.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/3.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/4.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/5.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/6.png" width="240"><img src="https://raw.githubusercontent.com/liman123/DebugMan/Swift3/Screenshots/7.png" width="240">
 
 ## References
 

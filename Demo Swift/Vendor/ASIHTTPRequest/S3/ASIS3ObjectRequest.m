@@ -23,7 +23,10 @@ NSString *const ASIS3StorageClassReducedRedundancy = @"REDUCED_REDUNDANCY";
 
 + (id)requestWithBucket:(NSString *)theBucket key:(NSString *)theKey
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
 	ASIS3ObjectRequest *newRequest = [[[self alloc] initWithURL:nil] autorelease];
+#pragma clang diagnostic pop
 	[newRequest setBucket:theBucket];
 	[newRequest setKey:theKey];
 	return newRequest;
@@ -31,7 +34,10 @@ NSString *const ASIS3StorageClassReducedRedundancy = @"REDUCED_REDUNDANCY";
 
 + (id)requestWithBucket:(NSString *)theBucket key:(NSString *)theKey subResource:(NSString *)theSubResource
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
 	ASIS3ObjectRequest *newRequest = [[[self alloc] initWithURL:nil] autorelease];
+#pragma clang diagnostic pop
 	[newRequest setSubResource:theSubResource];
 	[newRequest setBucket:theBucket];
 	[newRequest setKey:theKey];

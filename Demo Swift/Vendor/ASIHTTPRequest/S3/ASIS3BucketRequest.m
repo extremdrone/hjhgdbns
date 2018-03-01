@@ -30,14 +30,20 @@
 
 + (id)requestWithBucket:(NSString *)theBucket
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
 	ASIS3BucketRequest *request = [[[self alloc] initWithURL:nil] autorelease];
+#pragma clang diagnostic pop
 	[request setBucket:theBucket];
 	return request;
 }
 
 + (id)requestWithBucket:(NSString *)theBucket subResource:(NSString *)theSubResource
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
 	ASIS3BucketRequest *request = [[[self alloc] initWithURL:nil] autorelease];
+#pragma clang diagnostic pop
 	[request setBucket:theBucket];
 	[request setSubResource:theSubResource];
 	return request;

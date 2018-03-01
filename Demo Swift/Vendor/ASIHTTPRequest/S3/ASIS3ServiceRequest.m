@@ -21,7 +21,10 @@
 
 + (id)serviceRequest
 {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
 	ASIS3ServiceRequest *request = [[[self alloc] initWithURL:nil] autorelease];
+#pragma clang diagnostic pop
 	return request;
 }
 

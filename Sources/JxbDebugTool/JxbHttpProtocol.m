@@ -125,6 +125,10 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
     model.isImage = [self.response.MIMEType rangeOfString:@"image"].location != NSNotFound;
     model.totalDuration = [NSString stringWithFormat:@"%f (s)",[[NSDate date] timeIntervalSince1970] - self.startTime];
     model.startTime = [NSString stringWithFormat:@"%f",self.startTime];
+    
+    
+    model.errorDescription = self.error.description;
+    model.errorLocalizedDescription = self.error.localizedDescription;
     model.headerFields = self.request.allHTTPHeaderFields;
     
     if (self.response.MIMEType == nil) {
@@ -158,10 +162,7 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
 //处理500,404等错误
 - (JxbHttpModel *)handleError:(NSError *)error model:(JxbHttpModel *)model
 {
-    if (error) {
-        model.errorDescription = error.description;
-        model.errorLocalizedDescription = [NSString stringWithFormat:@"%@ (error code: %ld)", error.localizedDescription, (long)error.code];
-    }else{
+    if (!error) {
         //https://httpstatuses.com/
         switch (model.statusCode.integerValue) {
             case 100:
@@ -176,10 +177,10 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
                 model.errorDescription = @"1×× Informational :\nAn interim response used to inform the client that the server has accepted the complete request, but has not yet completed it.";
                 model.errorLocalizedDescription = @"Processing";
                 break;
-            case 200:
-                model.errorDescription = nil;//@"2×× Success :\nThe request has succeeded.";
-                model.errorLocalizedDescription = nil;//@"OK";
-                break;
+//            case 200:
+//                model.errorDescription = @"2×× Success :\nThe request has succeeded.";
+//                model.errorLocalizedDescription = @"OK";
+//                break;
             case 201:
                 model.errorDescription = @"2×× Success :\nThe request has been fulfilled and has resulted in one or more new resources being created.";
                 model.errorLocalizedDescription = @"Created";
@@ -417,8 +418,6 @@ static NSURLSessionConfiguration* SWHttp_defaultSessionConfiguration(id self, SE
                 model.errorLocalizedDescription = @"Network Connect Timeout Error";
                 break;
             default:
-                model.errorDescription = [NSString stringWithFormat:@"HTTP status code: %ld", (long)model.statusCode.integerValue];
-                model.errorLocalizedDescription = @"unknown error";
                 break;
         }
     }

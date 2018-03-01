@@ -58,7 +58,6 @@
 		EA94225E2046474E000D1DE8 /* LoggerCrash.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94215F2046474E000D1DE8 /* LoggerCrash.swift */; };
 		EA94225F2046474E000D1DE8 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421602046474E000D1DE8 /* StoreManager.swift */; };
 		EA9422602046474E000D1DE8 /* LoggerFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421612046474E000D1DE8 /* LoggerFormat.swift */; };
-		EA9422612046474E000D1DE8 /* LogHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421622046474E000D1DE8 /* LogHeadView.swift */; };
 		EA9422622046474E000D1DE8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421632046474E000D1DE8 /* Color.swift */; };
 		EA9422632046474E000D1DE8 /* DebugManSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421662046474E000D1DE8 /* DebugManSettings.swift */; };
 		EA9422642046474E000D1DE8 /* DebugMan.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9421672046474E000D1DE8 /* DebugMan.swift */; };
@@ -251,18 +250,19 @@
 		EA94231F2046474F000D1DE8 /* NetworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94222E2046474E000D1DE8 /* NetworkDetailViewController.swift */; };
 		EA9423202046474F000D1DE8 /* NetworkDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA94222F2046474E000D1DE8 /* NetworkDetailCell.swift */; };
 		EA9423212046474F000D1DE8 /* NetworkDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9422302046474E000D1DE8 /* NetworkDetailModel.swift */; };
-		EA9423222046474F000D1DE8 /* SandboxHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422322046474E000D1DE8 /* SandboxHelper.m */; };
-		EA9423232046474F000D1DE8 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422342046474E000D1DE8 /* FileTableViewCell.m */; };
-		EA9423242046474F000D1DE8 /* FilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422352046474E000D1DE8 /* FilePreviewController.m */; };
-		EA9423252046474F000D1DE8 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422362046474E000D1DE8 /* SandboxViewController.m */; };
-		EA9423262046474F000D1DE8 /* Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422372046474E000D1DE8 /* Sandbox.m */; };
-		EA9423272046474F000D1DE8 /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422392046474E000D1DE8 /* MLBFileInfo.m */; };
-		EA9423282046474F000D1DE8 /* JxbHttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94223F2046474E000D1DE8 /* JxbHttpProtocol.m */; };
-		EA9423292046474F000D1DE8 /* JxbHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422402046474E000D1DE8 /* JxbHttpModel.m */; };
-		EA94232A2046474F000D1DE8 /* JxbDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422452046474E000D1DE8 /* JxbDebugTool.m */; };
-		EA94232B2046474F000D1DE8 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422472046474E000D1DE8 /* JxbMemoryHelper.m */; };
-		EA94232C2046474F000D1DE8 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9422482046474E000D1DE8 /* JxbHttpDatasource.m */; };
 		EA94232D2046474F000D1DE8 /* MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EA94224A2046474E000D1DE8 /* MethodSwizzling.m */; };
+		EAB67C892047A0110052FE56 /* LogHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C882047A0110052FE56 /* LogHeadView.swift */; };
+		EAB67C952047A02A0052FE56 /* JxbHttpProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C8B2047A02A0052FE56 /* JxbHttpProtocol.m */; };
+		EAB67C962047A02A0052FE56 /* JxbHttpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C8C2047A02A0052FE56 /* JxbHttpModel.m */; };
+		EAB67C972047A02A0052FE56 /* JxbDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C912047A02A0052FE56 /* JxbDebugTool.m */; };
+		EAB67C982047A02A0052FE56 /* JxbMemoryHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C932047A02A0052FE56 /* JxbMemoryHelper.m */; };
+		EAB67C992047A02A0052FE56 /* JxbHttpDatasource.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C942047A02A0052FE56 /* JxbHttpDatasource.m */; };
+		EAB67CA72047A2690052FE56 /* SandboxHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C9B2047A2680052FE56 /* SandboxHelper.m */; };
+		EAB67CA82047A2690052FE56 /* FileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C9D2047A2680052FE56 /* FileTableViewCell.m */; };
+		EAB67CA92047A2690052FE56 /* FilePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C9E2047A2680052FE56 /* FilePreviewController.m */; };
+		EAB67CAA2047A2690052FE56 /* SandboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67C9F2047A2680052FE56 /* SandboxViewController.m */; };
+		EAB67CAB2047A2690052FE56 /* Sandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67CA02047A2680052FE56 /* Sandbox.m */; };
+		EAB67CAC2047A2690052FE56 /* MLBFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB67CA22047A2680052FE56 /* MLBFileInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -351,7 +351,6 @@
 		EA94215F2046474E000D1DE8 /* LoggerCrash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerCrash.swift; sourceTree = "<group>"; };
 		EA9421602046474E000D1DE8 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		EA9421612046474E000D1DE8 /* LoggerFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerFormat.swift; sourceTree = "<group>"; };
-		EA9421622046474E000D1DE8 /* LogHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHeadView.swift; sourceTree = "<group>"; };
 		EA9421632046474E000D1DE8 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		EA9421652046474E000D1DE8 /* DebugMan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMan.h; sourceTree = "<group>"; };
 		EA9421662046474E000D1DE8 /* DebugManSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugManSettings.swift; sourceTree = "<group>"; };
@@ -551,30 +550,31 @@
 		EA94222E2046474E000D1DE8 /* NetworkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailViewController.swift; sourceTree = "<group>"; };
 		EA94222F2046474E000D1DE8 /* NetworkDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailCell.swift; sourceTree = "<group>"; };
 		EA9422302046474E000D1DE8 /* NetworkDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDetailModel.swift; sourceTree = "<group>"; };
-		EA9422322046474E000D1DE8 /* SandboxHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxHelper.m; sourceTree = "<group>"; };
-		EA9422332046474E000D1DE8 /* MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileInfo.h; sourceTree = "<group>"; };
-		EA9422342046474E000D1DE8 /* FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewCell.m; sourceTree = "<group>"; };
-		EA9422352046474E000D1DE8 /* FilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePreviewController.m; sourceTree = "<group>"; };
-		EA9422362046474E000D1DE8 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
-		EA9422372046474E000D1DE8 /* Sandbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sandbox.m; sourceTree = "<group>"; };
-		EA9422382046474E000D1DE8 /* FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewCell.h; sourceTree = "<group>"; };
-		EA9422392046474E000D1DE8 /* MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileInfo.m; sourceTree = "<group>"; };
-		EA94223A2046474E000D1DE8 /* SandboxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxHelper.h; sourceTree = "<group>"; };
-		EA94223B2046474E000D1DE8 /* FilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewController.h; sourceTree = "<group>"; };
-		EA94223C2046474E000D1DE8 /* Sandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandbox.h; sourceTree = "<group>"; };
-		EA94223D2046474E000D1DE8 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
-		EA94223F2046474E000D1DE8 /* JxbHttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpProtocol.m; sourceTree = "<group>"; };
-		EA9422402046474E000D1DE8 /* JxbHttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpModel.m; sourceTree = "<group>"; };
-		EA9422412046474E000D1DE8 /* JxbDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbDebugTool.h; sourceTree = "<group>"; };
-		EA9422422046474E000D1DE8 /* JxbHttpDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpDatasource.h; sourceTree = "<group>"; };
-		EA9422432046474E000D1DE8 /* JxbMemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbMemoryHelper.h; sourceTree = "<group>"; };
-		EA9422442046474E000D1DE8 /* JxbHttpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpModel.h; sourceTree = "<group>"; };
-		EA9422452046474E000D1DE8 /* JxbDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbDebugTool.m; sourceTree = "<group>"; };
-		EA9422462046474E000D1DE8 /* JxbHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpProtocol.h; sourceTree = "<group>"; };
-		EA9422472046474E000D1DE8 /* JxbMemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbMemoryHelper.m; sourceTree = "<group>"; };
-		EA9422482046474E000D1DE8 /* JxbHttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpDatasource.m; sourceTree = "<group>"; };
 		EA94224A2046474E000D1DE8 /* MethodSwizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzling.m; sourceTree = "<group>"; };
 		EA94224B2046474E000D1DE8 /* MethodSwizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodSwizzling.h; sourceTree = "<group>"; };
+		EAB67C882047A0110052FE56 /* LogHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHeadView.swift; sourceTree = "<group>"; };
+		EAB67C8B2047A02A0052FE56 /* JxbHttpProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpProtocol.m; sourceTree = "<group>"; };
+		EAB67C8C2047A02A0052FE56 /* JxbHttpModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpModel.m; sourceTree = "<group>"; };
+		EAB67C8D2047A02A0052FE56 /* JxbDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbDebugTool.h; sourceTree = "<group>"; };
+		EAB67C8E2047A02A0052FE56 /* JxbHttpDatasource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpDatasource.h; sourceTree = "<group>"; };
+		EAB67C8F2047A02A0052FE56 /* JxbMemoryHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbMemoryHelper.h; sourceTree = "<group>"; };
+		EAB67C902047A02A0052FE56 /* JxbHttpModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpModel.h; sourceTree = "<group>"; };
+		EAB67C912047A02A0052FE56 /* JxbDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbDebugTool.m; sourceTree = "<group>"; };
+		EAB67C922047A02A0052FE56 /* JxbHttpProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JxbHttpProtocol.h; sourceTree = "<group>"; };
+		EAB67C932047A02A0052FE56 /* JxbMemoryHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbMemoryHelper.m; sourceTree = "<group>"; };
+		EAB67C942047A02A0052FE56 /* JxbHttpDatasource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JxbHttpDatasource.m; sourceTree = "<group>"; };
+		EAB67C9B2047A2680052FE56 /* SandboxHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxHelper.m; sourceTree = "<group>"; };
+		EAB67C9C2047A2680052FE56 /* MLBFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLBFileInfo.h; sourceTree = "<group>"; };
+		EAB67C9D2047A2680052FE56 /* FileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewCell.m; sourceTree = "<group>"; };
+		EAB67C9E2047A2680052FE56 /* FilePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePreviewController.m; sourceTree = "<group>"; };
+		EAB67C9F2047A2680052FE56 /* SandboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandboxViewController.m; sourceTree = "<group>"; };
+		EAB67CA02047A2680052FE56 /* Sandbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sandbox.m; sourceTree = "<group>"; };
+		EAB67CA12047A2680052FE56 /* FileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewCell.h; sourceTree = "<group>"; };
+		EAB67CA22047A2680052FE56 /* MLBFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLBFileInfo.m; sourceTree = "<group>"; };
+		EAB67CA32047A2680052FE56 /* SandboxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxHelper.h; sourceTree = "<group>"; };
+		EAB67CA42047A2680052FE56 /* FilePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePreviewController.h; sourceTree = "<group>"; };
+		EAB67CA52047A2680052FE56 /* Sandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sandbox.h; sourceTree = "<group>"; };
+		EAB67CA62047A2680052FE56 /* SandboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandboxViewController.h; sourceTree = "<group>"; };
 		EADFB133200D9F32001E0C67 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -753,14 +753,14 @@
 		EA94214B2046474E000D1DE8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EAB67C9A2047A2680052FE56 /* Sandbox */,
+				EAB67C8A2047A02A0052FE56 /* JxbDebugTool */,
 				EA94214C2046474E000D1DE8 /* Dotzu */,
 				EA9421642046474E000D1DE8 /* Core */,
 				EA9421692046474E000D1DE8 /* App */,
 				EA94216C2046474E000D1DE8 /* Category */,
 				EA9421782046474E000D1DE8 /* Resources */,
 				EA94222A2046474E000D1DE8 /* Network */,
-				EA9422312046474E000D1DE8 /* Sandbox */,
-				EA94223E2046474E000D1DE8 /* JxbDebugTool */,
 				EA9422492046474E000D1DE8 /* MethodSwizzling */,
 			);
 			name = Sources;
@@ -791,7 +791,7 @@
 				EA94215F2046474E000D1DE8 /* LoggerCrash.swift */,
 				EA9421602046474E000D1DE8 /* StoreManager.swift */,
 				EA9421612046474E000D1DE8 /* LoggerFormat.swift */,
-				EA9421622046474E000D1DE8 /* LogHeadView.swift */,
+				EAB67C882047A0110052FE56 /* LogHeadView.swift */,
 				EA9421632046474E000D1DE8 /* Color.swift */,
 			);
 			path = Dotzu;
@@ -838,9 +838,9 @@
 		EA9421782046474E000D1DE8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA94217B2046474E000D1DE8 /* images */,
 				EA9421792046474E000D1DE8 /* NetworkCell.xib */,
 				EA94217A2046474E000D1DE8 /* Logs.storyboard */,
-				EA94217B2046474E000D1DE8 /* images */,
 				EA9422272046474E000D1DE8 /* Network.storyboard */,
 				EA9422282046474E000D1DE8 /* Manager.storyboard */,
 				EA9422292046474E000D1DE8 /* App.storyboard */,
@@ -851,13 +851,13 @@
 		EA94217B2046474E000D1DE8 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EA9421822046474E000D1DE8 /* FileType */,
 				EA94217C2046474E000D1DE8 /* DebugMan_app@2x.png */,
 				EA94217D2046474E000D1DE8 /* DebugMan_json.png */,
 				EA94217E2046474E000D1DE8 /* DebugMan_sandbox@2x.png */,
 				EA94217F2046474E000D1DE8 /* DebugMan_bugs@2x.png */,
 				EA9421802046474E000D1DE8 /* DebugMan_network@2x.png */,
 				EA9421812046474E000D1DE8 /* DebugMan_logs@2x.png */,
-				EA9421822046474E000D1DE8 /* FileType */,
 				EA9422252046474E000D1DE8 /* DebugMan_logo.png */,
 				EA9422262046474E000D1DE8 /* DebugMan_close@2x.png */,
 			);
@@ -1046,42 +1046,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		EA9422312046474E000D1DE8 /* Sandbox */ = {
-			isa = PBXGroup;
-			children = (
-				EA9422322046474E000D1DE8 /* SandboxHelper.m */,
-				EA9422332046474E000D1DE8 /* MLBFileInfo.h */,
-				EA9422342046474E000D1DE8 /* FileTableViewCell.m */,
-				EA9422352046474E000D1DE8 /* FilePreviewController.m */,
-				EA9422362046474E000D1DE8 /* SandboxViewController.m */,
-				EA9422372046474E000D1DE8 /* Sandbox.m */,
-				EA9422382046474E000D1DE8 /* FileTableViewCell.h */,
-				EA9422392046474E000D1DE8 /* MLBFileInfo.m */,
-				EA94223A2046474E000D1DE8 /* SandboxHelper.h */,
-				EA94223B2046474E000D1DE8 /* FilePreviewController.h */,
-				EA94223C2046474E000D1DE8 /* Sandbox.h */,
-				EA94223D2046474E000D1DE8 /* SandboxViewController.h */,
-			);
-			path = Sandbox;
-			sourceTree = "<group>";
-		};
-		EA94223E2046474E000D1DE8 /* JxbDebugTool */ = {
-			isa = PBXGroup;
-			children = (
-				EA94223F2046474E000D1DE8 /* JxbHttpProtocol.m */,
-				EA9422402046474E000D1DE8 /* JxbHttpModel.m */,
-				EA9422412046474E000D1DE8 /* JxbDebugTool.h */,
-				EA9422422046474E000D1DE8 /* JxbHttpDatasource.h */,
-				EA9422432046474E000D1DE8 /* JxbMemoryHelper.h */,
-				EA9422442046474E000D1DE8 /* JxbHttpModel.h */,
-				EA9422452046474E000D1DE8 /* JxbDebugTool.m */,
-				EA9422462046474E000D1DE8 /* JxbHttpProtocol.h */,
-				EA9422472046474E000D1DE8 /* JxbMemoryHelper.m */,
-				EA9422482046474E000D1DE8 /* JxbHttpDatasource.m */,
-			);
-			path = JxbDebugTool;
-			sourceTree = "<group>";
-		};
 		EA9422492046474E000D1DE8 /* MethodSwizzling */ = {
 			isa = PBXGroup;
 			children = (
@@ -1089,6 +1053,42 @@
 				EA94224B2046474E000D1DE8 /* MethodSwizzling.h */,
 			);
 			path = MethodSwizzling;
+			sourceTree = "<group>";
+		};
+		EAB67C8A2047A02A0052FE56 /* JxbDebugTool */ = {
+			isa = PBXGroup;
+			children = (
+				EAB67C8B2047A02A0052FE56 /* JxbHttpProtocol.m */,
+				EAB67C8C2047A02A0052FE56 /* JxbHttpModel.m */,
+				EAB67C8D2047A02A0052FE56 /* JxbDebugTool.h */,
+				EAB67C8E2047A02A0052FE56 /* JxbHttpDatasource.h */,
+				EAB67C8F2047A02A0052FE56 /* JxbMemoryHelper.h */,
+				EAB67C902047A02A0052FE56 /* JxbHttpModel.h */,
+				EAB67C912047A02A0052FE56 /* JxbDebugTool.m */,
+				EAB67C922047A02A0052FE56 /* JxbHttpProtocol.h */,
+				EAB67C932047A02A0052FE56 /* JxbMemoryHelper.m */,
+				EAB67C942047A02A0052FE56 /* JxbHttpDatasource.m */,
+			);
+			path = JxbDebugTool;
+			sourceTree = "<group>";
+		};
+		EAB67C9A2047A2680052FE56 /* Sandbox */ = {
+			isa = PBXGroup;
+			children = (
+				EAB67C9B2047A2680052FE56 /* SandboxHelper.m */,
+				EAB67C9C2047A2680052FE56 /* MLBFileInfo.h */,
+				EAB67C9D2047A2680052FE56 /* FileTableViewCell.m */,
+				EAB67C9E2047A2680052FE56 /* FilePreviewController.m */,
+				EAB67C9F2047A2680052FE56 /* SandboxViewController.m */,
+				EAB67CA02047A2680052FE56 /* Sandbox.m */,
+				EAB67CA12047A2680052FE56 /* FileTableViewCell.h */,
+				EAB67CA22047A2680052FE56 /* MLBFileInfo.m */,
+				EAB67CA32047A2680052FE56 /* SandboxHelper.h */,
+				EAB67CA42047A2680052FE56 /* FilePreviewController.h */,
+				EAB67CA52047A2680052FE56 /* Sandbox.h */,
+				EAB67CA62047A2680052FE56 /* SandboxViewController.h */,
+			);
+			path = Sandbox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1406,39 +1406,39 @@
 				EA94225F2046474E000D1DE8 /* StoreManager.swift in Sources */,
 				EA3897CF2045348E00AC5494 /* ASICloudFilesRequest.m in Sources */,
 				EA3897D72045348E00AC5494 /* ASIFormDataRequest.m in Sources */,
-				EA94232A2046474F000D1DE8 /* JxbDebugTool.m in Sources */,
 				EA3897CE2045348E00AC5494 /* ASICloudFilesObject.m in Sources */,
 				EA9422632046474E000D1DE8 /* DebugManSettings.swift in Sources */,
 				EA3897E52045352F00AC5494 /* Reachability.m in Sources */,
 				EA415FC52045385200243C2D /* ASIHTTPRequestClient.m in Sources */,
-				EA9423272046474F000D1DE8 /* MLBFileInfo.m in Sources */,
 				EA3897C92045348E00AC5494 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				EA9422682046474E000D1DE8 /* NSString+DebugMan.m in Sources */,
+				EAB67C952047A02A0052FE56 /* JxbHttpProtocol.m in Sources */,
 				EA94225C2046474E000D1DE8 /* InformationsTableViewController.swift in Sources */,
-				EA9423262046474F000D1DE8 /* Sandbox.m in Sources */,
+				EAB67CA92047A2690052FE56 /* FilePreviewController.m in Sources */,
 				EA3897D22045348E00AC5494 /* ASIS3ObjectRequest.m in Sources */,
+				EAB67CAA2047A2690052FE56 /* SandboxViewController.m in Sources */,
 				EA3897D12045348E00AC5494 /* ASIS3ServiceRequest.m in Sources */,
-				EA9423222046474F000D1DE8 /* SandboxHelper.m in Sources */,
 				EA94231C2046474F000D1DE8 /* ToJSONViewController.swift in Sources */,
 				EA9422672046474E000D1DE8 /* AboutViewController.swift in Sources */,
 				EA94226B2046474E000D1DE8 /* UIWindow+DebugMan.m in Sources */,
 				EA3897CA2045348E00AC5494 /* ASICloudFilesContainerRequest.m in Sources */,
+				EAB67CAC2047A2690052FE56 /* MLBFileInfo.m in Sources */,
 				EA94225D2046474E000D1DE8 /* Device.swift in Sources */,
 				EA94226C2046474E000D1DE8 /* NSURLRequest+DebugMan.m in Sources */,
 				EA94224C2046474E000D1DE8 /* LogTabBarViewController.swift in Sources */,
 				EA3897DE2045348E00AC5494 /* ASIWebPageRequest.m in Sources */,
 				EA94226A2046474E000D1DE8 /* UIColor+DebugMan.m in Sources */,
+				EAB67C992047A02A0052FE56 /* JxbHttpDatasource.m in Sources */,
 				EA9422552046474E000D1DE8 /* ManagerViewController.swift in Sources */,
 				EA94232D2046474F000D1DE8 /* MethodSwizzling.m in Sources */,
 				EA3897D42045348E00AC5494 /* ASIS3BucketRequest.m in Sources */,
 				EA9422522046474E000D1DE8 /* NotificationCenter.swift in Sources */,
 				EA9422692046474E000D1DE8 /* NSData+DebugMan.m in Sources */,
+				EAB67CAB2047A2690052FE56 /* Sandbox.m in Sources */,
 				EA3897D52045348E00AC5494 /* ASIS3BucketObject.m in Sources */,
-				EA9423242046474F000D1DE8 /* FilePreviewController.m in Sources */,
 				EA9422662046474E000D1DE8 /* IgnoredURLsViewController.swift in Sources */,
 				EA3897D02045348E00AC5494 /* ASIS3Bucket.m in Sources */,
 				EA3897CD2045348E00AC5494 /* ASICloudFilesObjectRequest.m in Sources */,
-				EA9423252046474F000D1DE8 /* SandboxViewController.m in Sources */,
 				EA94225A2046474E000D1DE8 /* CrashListTableViewCell.swift in Sources */,
 				EA3897CB2045348E00AC5494 /* ASICloudFilesContainer.m in Sources */,
 				EA9422622046474E000D1DE8 /* Color.swift in Sources */,
@@ -1452,19 +1452,20 @@
 				EA44B7891FE13ECD00DF7FF6 /* ViewController.swift in Sources */,
 				EA9423212046474F000D1DE8 /* NetworkDetailModel.swift in Sources */,
 				EA9422512046474E000D1DE8 /* LogTableViewCell.swift in Sources */,
+				EAB67CA82047A2690052FE56 /* FileTableViewCell.m in Sources */,
 				EA3897D62045348E00AC5494 /* ASIHTTPRequest.m in Sources */,
 				EA9422542046474E000D1DE8 /* LogsViewController.swift in Sources */,
 				EA3897D92045348E00AC5494 /* ASIAuthenticationDialog.m in Sources */,
+				EAB67CA72047A2690052FE56 /* SandboxHelper.m in Sources */,
 				EA3897DD2045348E00AC5494 /* ASIDownloadCache.m in Sources */,
-				EA94232C2046474F000D1DE8 /* JxbHttpDatasource.m in Sources */,
+				EAB67C962047A02A0052FE56 /* JxbHttpModel.m in Sources */,
 				EA94231D2046474F000D1DE8 /* NetworkCell.swift in Sources */,
-				EA94232B2046474F000D1DE8 /* JxbMemoryHelper.m in Sources */,
 				EA9423202046474F000D1DE8 /* NetworkDetailCell.swift in Sources */,
-				EA9423232046474F000D1DE8 /* FileTableViewCell.m in Sources */,
+				EAB67C972047A02A0052FE56 /* JxbDebugTool.m in Sources */,
 				EA3897C82045348E00AC5494 /* ASIDataCompressor.m in Sources */,
 				EA94231E2046474F000D1DE8 /* NetworkViewController.swift in Sources */,
 				EA9422582046474E000D1DE8 /* DotzuManager.swift in Sources */,
-				EA9423292046474F000D1DE8 /* JxbHttpModel.m in Sources */,
+				EAB67C892047A0110052FE56 /* LogHeadView.swift in Sources */,
 				EA3897DC2045348E00AC5494 /* ASINetworkQueue.m in Sources */,
 				EA9422532046474E000D1DE8 /* DeviceModel.swift in Sources */,
 				EA94225B2046474E000D1DE8 /* ListCrashesViewController.swift in Sources */,
@@ -1473,10 +1474,9 @@
 				EA44B7871FE13ECD00DF7FF6 /* AppDelegate.swift in Sources */,
 				EA3897DA2045348E00AC5494 /* ASIInputStream.m in Sources */,
 				EA3897CC2045348E00AC5494 /* ASICloudFilesCDNRequest.m in Sources */,
-				EA9423282046474F000D1DE8 /* JxbHttpProtocol.m in Sources */,
-				EA9422612046474E000D1DE8 /* LogHeadView.swift in Sources */,
 				EA94224E2046474E000D1DE8 /* Log.swift in Sources */,
 				EA94225E2046474E000D1DE8 /* LoggerCrash.swift in Sources */,
+				EAB67C982047A02A0052FE56 /* JxbMemoryHelper.m in Sources */,
 				EA9422602046474E000D1DE8 /* LoggerFormat.swift in Sources */,
 				EA9422592046474E000D1DE8 /* LogNavigationViewController.swift in Sources */,
 			);

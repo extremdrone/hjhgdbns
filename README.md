@@ -159,7 +159,7 @@ If you are using crash reporting SDKs like [Crashlytics](https://try.crashlytics
 
 - If you use [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) for HTTP requests, `DebugMan` can not catch the HTTP requests. 
 
-- Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` just hooked the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
+- Because `ASIHTTPRequest` is a wrapper around the `CFNetwork` API, `DebugMan` hooked([swizzling](http://nshipster.com/method-swizzling/)) the `NSURLConnection/NSURLSession` API, not `CFNetwork` API.
 
 ## Author
 

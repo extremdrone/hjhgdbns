@@ -161,12 +161,6 @@ If you want to get the root view controller for the app's key window, `UIApplica
 
 If you want to show a toast in app's key window, like [MBProgressHUD](https://github.com/jdg/MBProgressHUD) [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD), `UIApplication.shared.keyWindow` to get app's key window may cause toast invisible. You should use `UIApplication.shared.delegate?.window`.
 
-## Author
-
-- [liman](https://liman123.github.io/)
-- 723661989@163.com
-- gg723661989@gmail.com
-
 ## License
 
 `DebugMan` is available under the `MIT` license. See the `LICENSE` file for more info.

@@ -1,9 +1,9 @@
 //
-//  NetworkCell.swift
-//  PhiSpeaker
+//  DotzuX.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
@@ -11,7 +11,7 @@ import UIKit
 
 class NetworkCell: UITableViewCell {
     
-    var formatter: DateFormatter = DateFormatter()
+    lazy var formatter: DateFormatter = DateFormatter()
     
     @IBOutlet weak var leftAlignLine: UIView!
     @IBOutlet weak var statusCodeLabel: UILabel!
@@ -20,26 +20,25 @@ class NetworkCell: UITableViewCell {
     @IBOutlet weak var requestUrlTextView: UITextView!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
-    @IBOutlet weak var refreshImageView: UIImageView!
+
     
-    
-    var httpModel: JxbHttpModel? {
+    var httpModel: HttpModel? {
         didSet {
             
-            guard let serverURL = DebugManSettings.shared.serverURL else {return}
+            guard let serverURL = DotzuXSettings.shared.serverURL else {return}
             
             //域名
             requestUrlTextView.text = httpModel?.url.absoluteString
             if requestUrlTextView.text?.contains(serverURL) == true {
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.heavy)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .heavy)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.boldSystemFont(ofSize: 13)
                 }
             }else{
                 if #available(iOS 8.2, *) {
-                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular)
+                    requestUrlTextView.font = UIFont.systemFont(ofSize: 13, weight: .regular)
                 } else {
                     // Fallback on earlier versions
                     requestUrlTextView.font = UIFont.systemFont(ofSize: 13)
@@ -60,14 +59,17 @@ class NetworkCell: UITableViewCell {
                 }
             }
             
+            //https://httpstatuses.com/
+            let successStatusCodes = ["200","201","202","203","204","205","206","207","208","226"]
+            
             //状态码
             statusCodeLabel.text = httpModel?.statusCode
-            if statusCodeLabel.text == "200" {
+            if successStatusCodes.contains(statusCodeLabel.text ?? "") {
                 statusCodeLabel.textColor = Color.mainGreen
             }else{
-                statusCodeLabel.textColor = UIColor.init(hexString: "#ff0000")
+                statusCodeLabel.textColor = "#ff0000".hexColor
             }
-            if statusCodeLabel.text == "0" {
+            if statusCodeLabel.text == "0" { //"0" means network unavailable
                 statusCodeLabel.text = "❌"
             }
             
@@ -80,16 +82,16 @@ class NetworkCell: UITableViewCell {
             
             //tag
             if httpModel?.isTag == true {
-                self.contentView.backgroundColor = UIColor.init(hexString: "#007aff")
+                self.contentView.backgroundColor = "#007aff".hexColor
             }else{
-                self.contentView.backgroundColor = UIColor.black
+                self.contentView.backgroundColor = .black
             }
             
             //isSelected
             if httpModel?.isSelected == true {
-                statusCodeView.backgroundColor = UIColor.init(hexString: "#222222")
+                statusCodeView.backgroundColor = "#222222".hexColor
             }else{
-                statusCodeView.backgroundColor = UIColor.init(hexString: "#333333")
+                statusCodeView.backgroundColor = "#333333".hexColor
             }
         }
     }

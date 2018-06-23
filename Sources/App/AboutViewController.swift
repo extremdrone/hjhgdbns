@@ -11,11 +11,6 @@ import UIKit
 
 class AboutViewController: UITableViewController {
     
-    static func instanceFromStoryBoard() -> AboutViewController {
-        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self))
-        return storyboard.instantiateViewController(withIdentifier: "AboutViewController") as! AboutViewController
-    }
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +19,13 @@ class AboutViewController: UITableViewController {
     }
     
     //MARK: - target action
-    @IBAction func tapURL(_ sender: UITapGestureRecognizer) {
-        guard let url = URL.init(string: "https://github.com/liman123/DebugMan") else {return}
-        UIApplication.shared.openURL(url)
+    @IBAction func tapUrl(_ sender: UITapGestureRecognizer) {
+        guard let url = URL.init(string: "http://DotzuX.com") else {return}
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(url)
+        }
     }
 }

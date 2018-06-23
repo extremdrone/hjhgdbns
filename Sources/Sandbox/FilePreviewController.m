@@ -1,9 +1,9 @@
 //
-//  FilePreviewController.m
-//  Example
+//  DotzuX.swift
+//  demo
 //
-//  Created by meilbn on 20/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import "FilePreviewController.h"
@@ -121,7 +121,7 @@
                             self.textView.text = @" unable to preview";
                             self.textView.backgroundColor = [UIColor blackColor];
                             self.textView.textColor = [UIColor whiteColor];
-                            self.textView.font = [UIFont boldSystemFontOfSize:17];
+                            self.textView.font = [UIFont systemFontOfSize:17];
                         });
                     }else{
                         NSError *error;
@@ -133,7 +133,7 @@
                                 self.textView.text = @" unable to preview";
                                 self.textView.backgroundColor = [UIColor blackColor];
                                 self.textView.textColor = [UIColor whiteColor];
-                                self.textView.font = [UIFont boldSystemFontOfSize:17];
+                                self.textView.font = [UIFont systemFontOfSize:17];
                             }else{
                                 self.textView.text = content;
                                 self.textView.backgroundColor = [UIColor whiteColor];
@@ -150,7 +150,7 @@
                 self.textView.text = @" unable to preview";
                 self.textView.backgroundColor = [UIColor blackColor];
                 self.textView.textColor = [UIColor whiteColor];
-                self.textView.font = [UIFont boldSystemFontOfSize:17];
+                self.textView.font = [UIFont systemFontOfSize:17];
                 break;
         }
     }

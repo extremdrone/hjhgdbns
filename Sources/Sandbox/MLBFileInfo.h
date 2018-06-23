@@ -1,9 +1,9 @@
 //
-//  MLBFileInfo.h
-//  Example
+//  DotzuX.swift
+//  demo
 //
-//  Created by meilbn on 18/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

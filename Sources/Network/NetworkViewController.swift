@@ -1,27 +1,29 @@
 //
-//  NetworkViewController.swift
-//  PhiSpeaker
+//  DotzuX.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import UIKit
 
-class NetworkViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class NetworkViewController: UIViewController {
     
-    var models: Array<JxbHttpModel>?
-    var cacheModels: Array<JxbHttpModel>?
-    var searchModels: Array<JxbHttpModel>?
+    var reachEnd: Bool = true
     
-    var foo: Bool = false
+    var firstIn: Bool = true
+    
+    var models: Array<HttpModel>?
+    var cacheModels: Array<HttpModel>?
+    var searchModels: Array<HttpModel>?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+//    override var preferredStatusBarStyle: UIStatusBarStyle { //liman
+//        return .lightContent
+//    }
     
     //MARK: - tool
     //搜索逻辑
@@ -46,22 +48,33 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - private
-    func reloadHttp(_ isFirstIn: Bool = false) {
+    func reloadHttp(needScrollToEnd: Bool = false) {
         
-        self.models = (JxbHttpDatasource.shareInstance().httpModels as NSArray as? [JxbHttpModel])
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+            if self?.searchBar.isHidden == true {
+                self?.searchBar.isHidden = false
+            }
+        }
+        
+        
+        self.models = (HttpDatasource.shared().httpModels as NSArray as? [HttpModel])
         self.cacheModels = self.models
         
-        self.searchLogic(DebugManSettings.shared.networkSearchWord ?? "")
+        self.searchLogic(DotzuXSettings.shared.networkSearchWord ?? "")
 
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
             
-            if isFirstIn == false {return}
+            if needScrollToEnd == false {return}
             
             //table下滑到底部
             if let count = self?.models?.count {
                 if count > 0 {
-                    self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
+                    guard let firstIn = self?.firstIn else {return}
+                    self?.tableView.tableViewScrollToBottom(animated: !firstIn)
+                    self?.firstIn = false
+                    
+                    //self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
                     
                     /*
                      //滑动不到最底部, 弃用
@@ -76,44 +89,31 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - init
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if foo == true {return}
-        foo = true
-        
-        
-        guard let models = self.models else {return}
-        let count = models.count
-        
-        if count > 0 {
-            //否则第一次进入滑动不到底部
-            DispatchQueue.main.async { [weak self] in
-                self?.tableView.scrollToRow(at: IndexPath.init(row: count-1, section: 0), at: .bottom, animated: false)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.shared.statusBarStyle = .lightContent
-        setNeedsStatusBarAppearanceUpdate()
+        //add FPSLabel behind status bar
+        addStatusBarBackgroundView(viewController: self)
+        
+//        UIApplication.shared.statusBarStyle = .lightContent //liman
+//        setNeedsStatusBarAppearanceUpdate()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DebugMan"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadHttp_notification(_ :)), name: NSNotification.Name("reloadHttp_DotzuX"), object: nil)
         
+        tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        
         searchBar.delegate = self
-        searchBar.text = DebugManSettings.shared.networkSearchWord
-        tableView.tableFooterView = UIView()
+        searchBar.text = DotzuXSettings.shared.networkSearchWord
+        searchBar.isHidden = true
         
         //hide searchBar icon
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar.leftViewMode = UITextFieldViewMode.never
         
-        reloadHttp(true)
+        reloadHttp(needScrollToEnd: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -125,7 +125,30 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         NotificationCenter.default.removeObserver(self)
     }
     
-    //MARK: - UITableViewDataSource
+    //MARK: - target action
+    @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
+        HttpDatasource.shared().reset()
+        models = []
+        cacheModels = []
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        DotzuXSettings.shared.networkSearchWord = nil
+        
+        dispatch_main_async_safe { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    //MARK: - notification
+    @objc func reloadHttp_notification(_ notification: Notification) {
+        
+        reloadHttp(needScrollToEnd: reachEnd)
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension NetworkViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
@@ -137,11 +160,14 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.httpModel = models?[indexPath.row]
         return cell
     }
+}
+
+//MARK: - UITableViewDelegate
+extension NetworkViewController: UITableViewDelegate {
     
-    //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        guard let serverURL = DebugManSettings.shared.serverURL else {return 0}
+        guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
         let model = models?[indexPath.row]
         var height: CGFloat = 0.0
         
@@ -151,18 +177,18 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
                 if model?.url.absoluteString.contains(serverURL) == true {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.dotzuX_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }else{
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: UIFont.Weight.regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }
                 
@@ -170,7 +196,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-        return 0  
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -213,7 +239,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         searchBar.resignFirstResponder()
-        left.backgroundColor = UIColor.init(hexString: "#007aff")
+        left.backgroundColor = "#007aff".hexColor
         return UISwipeActionsConfiguration(actions: [left])
     }
     
@@ -222,7 +248,7 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
             guard let models = self?.models else {return}
-            JxbHttpDatasource.shareInstance().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self?.models?.remove(at: indexPath.row)
             self?.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -247,21 +273,34 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
             guard let models = self.models else {return}
-            JxbHttpDatasource.shareInstance().remove(models[indexPath.row])
+            HttpDatasource.shared().remove(models[indexPath.row])
             self.models?.remove(at: indexPath.row)
             self.dispatch_main_async_safe { [weak self] in
                 self?.tableView.deleteRows(at: [indexPath], with: .automatic)
             }
         }
     }
+}
+
+//MARK: - UIScrollViewDelegate
+extension NetworkViewController: UIScrollViewDelegate {
     
-    //MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         searchBar.resignFirstResponder()
+        
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+            //you reached end of the table
+            reachEnd = true
+        }else{
+            reachEnd = false
+        }
     }
+}
+
+//MARK: - UISearchBarDelegate
+extension NetworkViewController: UISearchBarDelegate {
     
-    //MARK: - UISearchBarDelegate
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -269,29 +308,12 @@ class NetworkViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        DebugManSettings.shared.networkSearchWord = searchText
+        DotzuXSettings.shared.networkSearchWord = searchText
         searchLogic(searchText)
         
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
         }
-    }
-    
-    //MARK: - target action
-    @IBAction func tapTrashButton(_ sender: UIBarButtonItem) {
-        JxbHttpDatasource.shareInstance().reset()
-        models = []
-        cacheModels = []
-        searchBar.resignFirstResponder()
-        
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-    
-    //MARK: - notification
-    @objc func reloadHttp_notification(_ notification: Notification) {
-        reloadHttp()
     }
 }
 

@@ -1,9 +1,9 @@
 //
-//  IgnoredURLsViewController.swift
-//  PhiHome
+//  DotzuX.swift
+//  demo
 //
-//  Created by liman on 28/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
@@ -13,21 +13,19 @@ class IgnoredURLsViewController: UITableViewController {
     
     var models: Array<String>?
     
-    static func instanceFromStoryBoard() -> IgnoredURLsViewController {
-        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DebugMan.self))
-        return storyboard.instantiateViewController(withIdentifier: "IgnoredURLsViewController") as! IgnoredURLsViewController
-    }
-    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
 
-        models = DebugManSettings.shared.ignoredURLs
+        models = DotzuXSettings.shared.ignoredURLs
     }
+}
+
+//MARK: - UITableViewDataSource
+extension IgnoredURLsViewController {
     
-    //MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
@@ -35,8 +33,8 @@ class IgnoredURLsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell.init(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = models?[indexPath.row]
-        cell.textLabel?.textColor = UIColor.white
-        cell.contentView.backgroundColor = UIColor.black
+        cell.textLabel?.textColor = .white
+        cell.contentView.backgroundColor = .black
         cell.selectionStyle = .none
         
         return cell

@@ -1,16 +1,19 @@
 //
-//  SandboxViewController.m
-//  Example
+//  DotzuX.swift
+//  demo
 //
-//  Created by meilbn on 18/07/2017.
-//  Copyright © 2017 meilbn. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 
 #import "SandboxViewController.h"
 #import "FilePreviewController.h"
 #import "FileTableViewCell.h"
 #import "Sandbox.h"
 #import <QuickLook/QuickLook.h>
+#import "FPSLabel.h"
 
 #define MLBIsStringEmpty(string)                    (nil == string || (NSNull *)string == [NSNull null] || [@"" isEqualToString:string])
 #define MLBIsStringNotEmpty(string)                 (string && (NSNull *)string != [NSNull null] && ![@"" isEqualToString:string])
@@ -48,7 +51,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
                                                                     NSForegroundColorAttributeName: [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0]
                                                                     };
     
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DotzuX_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     leftItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
     self.navigationController.topViewController.navigationItem.leftBarButtonItem = leftItem;
 }
@@ -58,9 +61,32 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+///remove FPSLabel from status bar
+- (void)removeStatusBarBackgroundView:(UIViewController *)viewController
+{
+//    FPSLabel *label = [viewController.navigationController.view viewWithTag:1001];
+//    if (label) {[label removeFromSuperview];}
+}
+
+///add FPSLabel behind status bar
+- (void)addStatusBarBackgroundView:(UIViewController *)viewController
+{
+//    CGRect rect = CGRectMake(UIScreen.mainScreen.bounds.size.width/2.0, 0, UIScreen.mainScreen.bounds.size.width/2.0, 20);
+//    FPSLabel *label = [[FPSLabel alloc] initWithFrame:rect];
+//    label.adjustsFontSizeToFitWidth = true; //sublabel.sizeToFit()
+//    label.tag = 1001;
+//    [viewController.navigationController.view addSubview:label];
+}
+
 #pragma mark - View Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //remove FPSLabel from status bar
+    [self removeStatusBarBackgroundView:self];
+    //add FPSLabel behind status bar
+    [self addStatusBarBackgroundView:self];
+    
     
     //add by liman
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:31/255.0 green:33/255.0 blue:36/255.0 alpha:1.0];
@@ -111,7 +137,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 - (void)setupViews {
     
     //liman
-    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DebugMan_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
+    UIBarButtonItem *closeItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"DotzuX_close" inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil] style:UIBarButtonItemStyleDone target:self action:@selector(exit)];
     closeItem.tintColor = [UIColor colorWithRed:66/255.0 green:212/255.0 blue:89/255.0 alpha:1.0];
 
     //liman
@@ -160,8 +186,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
             [self updateToolbarItems];
-            if (_isFirstAppear) {
-                _isFirstAppear = NO;
+            if (self->_isFirstAppear) {
+                self->_isFirstAppear = NO;
             }
         });
     });
@@ -559,3 +585,4 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 @end
+#pragma clang diagnostic pop

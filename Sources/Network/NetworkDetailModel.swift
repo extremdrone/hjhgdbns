@@ -1,9 +1,9 @@
 //
-//  NetworkDetailModel.swift
-//  PhiSpeaker
+//  DotzuX.swift
+//  demo
 //
-//  Created by liman on 25/11/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by liman on 26/11/2017.
+//  Copyright © 2017 Apple. All rights reserved.
 //
 
 import Foundation
@@ -15,19 +15,22 @@ struct NetworkDetailModel {
     var blankContent: String?
     var isLast: Bool = false
     var requestSerializer: RequestSerializer = JSONRequestSerializer//默认JSON格式
-    var headerFields: [String: Any]?
+    var requestHeaderFields: [String: Any]?
+    var responseHeaderFields: [String: Any]?
     
     init(title: String? = nil, content: String? = "", _ image: UIImage? = nil) {
         self.title = title
         self.content = content
         self.image = image
         
-        //超时时间
-        if title == "LATENCY" {
+        
+        
+        //响应时间, 偶现bug
+        if title == "TOTAL TIME" {
             if let content = content {
                 if let double_second = Double(content) {
                     let int_second = Int(double_second)
-                    if int_second > 10000 {
+                    if int_second > 9999 {
                         self.content = ""
                     }else{
                         self.content = content

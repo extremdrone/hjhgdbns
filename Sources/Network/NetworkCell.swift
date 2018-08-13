@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ class NetworkCell: UITableViewCell {
     var httpModel: HttpModel? {
         didSet {
             
-            guard let serverURL = DotzuXSettings.shared.serverURL else {return}
+            guard let serverURL = CocoaDebugSettings.shared.serverURL else {return}
             
             //域名
             requestUrlTextView.text = httpModel?.url.absoluteString
@@ -65,7 +65,7 @@ class NetworkCell: UITableViewCell {
             //状态码
             statusCodeLabel.text = httpModel?.statusCode
             if successStatusCodes.contains(statusCodeLabel.text ?? "") {
-                statusCodeLabel.textColor = Color.mainGreen
+                statusCodeLabel.textColor = "#42d459".hexColor
             }else{
                 statusCodeLabel.textColor = "#ff0000".hexColor
             }
@@ -100,12 +100,17 @@ class NetworkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        imageLabel.backgroundColor = Color.mainGreen
+        requestTimeTextView.textColor = Color.mainGreen
         
-        requestUrlTextView.textContainer.lineFragmentPadding = 0
-        requestUrlTextView.textContainerInset = .zero
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         requestTimeTextView.textContainer.lineFragmentPadding = 0
         requestTimeTextView.textContainerInset = .zero
+        requestTimeTextView.isSelectable = false
+        
+        requestUrlTextView.textContainer.lineFragmentPadding = 0
+        requestUrlTextView.textContainerInset = .zero
+        requestUrlTextView.isSelectable = true
     }
 }

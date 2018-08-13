@@ -1,29 +1,29 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
 
 class CrashDetailViewController: UITableViewController {
-
-    @IBOutlet weak var textviewName: UITextView!
+    
+        @IBOutlet weak var textviewName: UITextView!
     @IBOutlet weak var textviewReason: UITextView!
     @IBOutlet weak var textviewStackTraces: UITextView!
     var crash: CrashModel?
 
     static func instanceFromStoryBoard() -> CrashDetailViewController {
-        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: DotzuX.self))
+        let storyboard = UIStoryboard(name: "App", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "CrashDetailViewController") as! CrashDetailViewController
     }
     
     //MARK - init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         tableView.delegate = self

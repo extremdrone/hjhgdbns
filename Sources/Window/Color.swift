@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
@@ -16,6 +16,6 @@ struct Color {
     }
 
     static var mainGreen: UIColor {
-        return "#42d459".hexColor
+        return CocoaDebug.mainColor.hexColor
     }
 }

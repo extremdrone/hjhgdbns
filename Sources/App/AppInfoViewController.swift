@@ -1,15 +1,15 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
 
 class AppInfoViewController: UITableViewController {
-
+    
     @IBOutlet weak var labelVersionNumber: UILabel!
     @IBOutlet weak var labelBuildNumber: UILabel!
     @IBOutlet weak var labelBundleName: UILabel!
@@ -40,15 +40,15 @@ class AppInfoViewController: UITableViewController {
         labelDeviceModel.text = "\(Device.deviceModel)"
         
         labelBundleID.text = Bundle.main.bundleIdentifier
-        labelignoredURLs.text = String(DotzuXSettings.shared.ignoredURLs?.count ?? 0)
+        labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
-        labelserverURL.text = DotzuXSettings.shared.serverURL
+        labelserverURL.text = CocoaDebugSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let count = UserDefaults.standard.integer(forKey: "crashCount_DotzuX")
+        let count = UserDefaults.standard.integer(forKey: "crashCount_CocoaDebug")
         labelCrashCount.text = "\(count)"
         labelCrashCount.textColor = count > 0 ? .red : .white
     }
@@ -59,7 +59,7 @@ extension AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
     {
-        if DotzuXSettings.shared.recordCrash == true {
+        if CocoaDebugSettings.shared.recordCrash == true {
             if section == 0 {
                 return 56
             }
@@ -76,7 +76,7 @@ extension AppInfoViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if DotzuXSettings.shared.recordCrash == false {
+        if CocoaDebugSettings.shared.recordCrash == false {
             if indexPath.section == 0 && indexPath.row == 0 {
                 return 0
             }
@@ -110,8 +110,8 @@ extension AppInfoViewController {
         if indexPath.section == 1 && indexPath.row == 3 {
             UIPasteboard.general.string = Bundle.main.bundleIdentifier
             
-            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            let alert = UIAlertController.init(title: "copied to clipboard", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }
@@ -121,10 +121,10 @@ extension AppInfoViewController {
                 return
             }
             
-            UIPasteboard.general.string = DotzuXSettings.shared.serverURL
+            UIPasteboard.general.string = CocoaDebugSettings.shared.serverURL
             
-            let alert = UIAlertController.init(title: "copied", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            let alert = UIAlertController.init(title: "copied to clipboard", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)
         }

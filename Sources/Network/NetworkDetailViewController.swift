@@ -1,26 +1,35 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
 import UIKit
+import MessageUI
 
-class NetworkDetailViewController: UITableViewController {
+class NetworkDetailViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+    
+    @IBOutlet weak var closeItem: UIBarButtonItem!
+    
+    lazy var formatter: DateFormatter = DateFormatter()
     
     var httpModel: HttpModel?
     
     lazy var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
     lazy var requestDictionary: [String: Any]? = Dictionary()
+    
+    var headerCell: NetworkCell?
+    
+    var messageBody: String = ""
 
     var justCancelCallback:(() -> Void)?
     
     static func instanceFromStoryBoard() -> NetworkDetailViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DotzuX.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "NetworkDetailViewController") as! NetworkDetailViewController
     }
     
@@ -52,77 +61,81 @@ class NetworkDetailViewController: UITableViewController {
         if httpModel?.isImage == true {
             //图片:
             //1.主要
-            let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            var m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
-            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let m4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            var model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil)
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             if let responseData = httpModel?.responseData {
-                m3 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
+                model_5 = NetworkDetailModel.init(title: "RESPONSE", content: nil, UIImage.init(data: responseData))
             }
             //2.次要
-            let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    m7.requestHeaderFields = requestHeaderFields
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2.requestHeaderFields = requestHeaderFields
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    m7_.responseHeaderFields = responseHeaderFields
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4.responseHeaderFields = responseHeaderFields
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
             //3.
-            detailModels.append(m1)
-            detailModels.append(m7)
-            detailModels.append(m2)
-            detailModels.append(m7_)
-            detailModels.append(m3)
-            detailModels.append(m8)
-            detailModels.append(m4)
-            detailModels.append(m5)
-            detailModels.append(m6)
+            detailModels.append(model_1)
+            detailModels.append(model_2)
+            detailModels.append(model_3)
+            detailModels.append(model_4)
+            detailModels.append(model_5)
+            detailModels.append(model_6)
+            detailModels.append(model_7)
+            detailModels.append(model_8)
+            detailModels.append(model_9)
         }
         else{
             //非图片:
             //1.主要
-            let m1 = NetworkDetailModel.init(title: "URL", content: "http://www.phicomm.com/cn/")
-            let m2 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
-            let m3 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
-            let m8 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
-            let m4 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
+            let model_1 = NetworkDetailModel.init(title: "URL", content: "https://github.com/CocoaDebug/CocoaDebug")
+            let model_3 = NetworkDetailModel.init(title: "REQUEST", content: requestContent)
+            let model_5 = NetworkDetailModel.init(title: "RESPONSE", content: httpModel?.responseData.dataToPrettyPrintString())
+            let model_6 = NetworkDetailModel.init(title: "ERROR", content: httpModel?.errorLocalizedDescription)
+            let model_7 = NetworkDetailModel.init(title: "ERROR DESCRIPTION", content: httpModel?.errorDescription)
             //2.次要
-            let m5 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
-            let m6 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
-            var m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
+            let model_8 = NetworkDetailModel.init(title: "TOTAL TIME", content: httpModel?.totalDuration)
+            let model_9 = NetworkDetailModel.init(title: "MIME TYPE", content: httpModel?.mineType)
+            var model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: nil)
             if let requestHeaderFields = httpModel?.requestHeaderFields {
                 if !requestHeaderFields.isEmpty {
-                    m7 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
-                    m7.requestHeaderFields = requestHeaderFields
+                    model_2 = NetworkDetailModel.init(title: "REQUEST HEADER", content: requestHeaderFields.description)
+                    model_2.requestHeaderFields = requestHeaderFields
+                    model_2.content = String(requestHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
-            var m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
+            var model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: nil)
             if let responseHeaderFields = httpModel?.responseHeaderFields {
                 if !responseHeaderFields.isEmpty {
-                    m7_ = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
-                    m7_.responseHeaderFields = responseHeaderFields
+                    model_4 = NetworkDetailModel.init(title: "RESPONSE HEADER", content: responseHeaderFields.description)
+                    model_4.responseHeaderFields = responseHeaderFields
+                    model_4.content = String(responseHeaderFields.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
                 }
             }
             //3.
-            detailModels.append(m1)
-            detailModels.append(m7)
-            detailModels.append(m2)
-            detailModels.append(m7_)
-            detailModels.append(m3)
-            detailModels.append(m8)
-            detailModels.append(m4)
-            detailModels.append(m5)
-            detailModels.append(m6)
+            detailModels.append(model_1)
+            detailModels.append(model_2)
+            detailModels.append(model_3)
+            detailModels.append(model_4)
+            detailModels.append(model_5)
+            detailModels.append(model_6)
+            detailModels.append(model_7)
+            detailModels.append(model_8)
+            detailModels.append(model_9)
         }
     }
     
@@ -142,10 +155,136 @@ class NetworkDetailViewController: UITableViewController {
         }
     }
     
+    
+    //email configure
+    func configureMailComposer(_ copy: Bool = false) -> MFMailComposeViewController? {
+        
+        //1.image
+        var img: UIImage? = nil
+        var isImage: Bool = false
+        if let httpModel = httpModel {
+            isImage = httpModel.isImage
+        }
+        
+        //2.body message ------------------ start ------------------
+        var string: String = ""
+        messageBody = ""
+        
+        for model in detailModels {
+            if let title = model.title, let content = model.content {
+                if content != "" {
+                    string = "\n\n" + "------- " + title + " -------" + "\n" + content
+                }
+            }
+            if !messageBody.contains(string) {
+                messageBody.append(string)
+            }
+            //image
+            if isImage == true {
+                if let image = model.image {
+                    img = image
+                }
+            }
+        }
+        
+        //2.1.url
+        var url: String = ""
+        if let httpModel = httpModel {
+            url = httpModel.url.absoluteString
+        }
+        
+        //2.2.method
+        var method: String = ""
+        if let httpModel = httpModel {
+            method = "[" + httpModel.method + "]"
+        }
+        
+        //2.3.time
+        var time: String = ""
+        if let httpModel = httpModel {
+            if let startTime = httpModel.startTime {
+                if (startTime as NSString).doubleValue == 0 {
+                    time = formatter.string(from: Date())
+                }else{
+                    time = formatter.string(from: NSDate(timeIntervalSince1970: (startTime as NSString).doubleValue) as Date)
+                }
+            }
+        }
+        
+        //2.4.statusCode
+        var statusCode: String = ""
+        if let httpModel = httpModel {
+            statusCode = httpModel.statusCode
+            if statusCode == "0" { //"0" means network unavailable
+                statusCode = "❌"
+            }
+        }
+        
+        //body message ------------------ end ------------------
+        var subString = method + " " + time + " " + "(" + statusCode + ")"
+        if subString.contains("❌") {
+            subString = subString.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        }
+        
+        messageBody = messageBody.replacingOccurrences(of: "https://github.com/CocoaDebug/CocoaDebug", with: url)
+        messageBody = subString + messageBody
+        
+        //////////////////////////////////////////////////////////////////////////////////
+        
+        if !MFMailComposeViewController.canSendMail() {
+            if copy == false {
+                //share via email
+                let alert = UIAlertController.init(title: "No Mail Accounts", message: "Please set up a Mail account in order to send email.", preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "OK", style: .cancel) { (_) in
+                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                //copy to clipboard
+                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+            }
+            
+            return nil
+        }
+        
+        if copy == true {
+            //copy to clipboard
+            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+            return nil
+        }
+        
+        //3.email recipients
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(CocoaDebugSettings.shared.emailToRecipients)
+        mailComposeVC.setCcRecipients(CocoaDebugSettings.shared.emailCcRecipients)
+        
+        //4.image
+        if let img = img {
+            if let imageData = UIImagePNGRepresentation(img) {
+                mailComposeVC.addAttachmentData(imageData, mimeType: "image/png", fileName: "image")
+            }
+        }
+        
+        //5.body
+        mailComposeVC.setMessageBody(messageBody, isHTML: false)
+        
+        //6.subject
+        mailComposeVC.setSubject(url)
+
+        return mailComposeVC
+    }
+    
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        closeItem.tintColor = Color.mainGreen
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
         //确定request格式(JSON/Form)
         detectRequestSerializer()
             
@@ -161,11 +300,23 @@ class NetworkDetailViewController: UITableViewController {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "NetworkCell", bundle: bundle)
         tableView.register(nib, forCellReuseIdentifier: "NetworkCell")
+        
+        //header
+        headerCell = bundle.loadNibNamed(String(describing: NetworkCell.self), owner: nil, options: nil)?.first as? NetworkCell
+        headerCell?.httpModel = httpModel
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(motionShake_notification), name: NSNotification.Name("motionShake_CocoaDebug"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        NotificationCenter.default.removeObserver(self)
+
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
@@ -173,7 +324,53 @@ class NetworkDetailViewController: UITableViewController {
     
     //MARK: - target action
     @IBAction func close(_ sender: UIBarButtonItem) {
-        (self.navigationController as! DotzuXNavigationController).exit()
+        (self.navigationController as! CocoaDebugNavigationController).exit()
+    }
+    
+    //MARK: - notification
+    @objc func motionShake_notification() {
+        
+        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
+        
+        // create an actionSheet
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // create an action
+        let firstAction: UIAlertAction = UIAlertAction(title: "share via email", style: .default) { [weak self] action -> Void in
+            if let mailComposeViewController = self?.configureMailComposer() {
+                self?.present(mailComposeViewController, animated: true, completion: nil)
+            }
+        }
+        
+        let secondAction: UIAlertAction = UIAlertAction(title: "copy to clipboard", style: .default) { [weak self] action -> Void in
+            _ = self?.configureMailComposer(true)
+            UIPasteboard.general.string = self?.messageBody
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+        }
+        
+        // add actions
+        actionSheetController.addAction(firstAction)
+        actionSheetController.addAction(secondAction)
+        actionSheetController.addAction(cancelAction)
+        
+        // present an actionSheet...
+        present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: - override
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(selectAll(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func selectAll(_ sender: Any?) {
+        headerCell?.requestUrlTextView.selectAll(sender)
     }
 }
 
@@ -216,7 +413,7 @@ extension NetworkDetailViewController {
 //            self?.tableView.reloadData()
 //        }
         
-        //2.点击了编辑view (编辑request/header)
+        //2.点击了编辑view
         cell.tapEditViewCallback = { [weak self] detailModel in
             let vc = JsonViewController.instanceFromStoryBoard()
             vc.detailModel = detailModel
@@ -251,7 +448,7 @@ extension NetworkDetailViewController {
                     return 0
                 }
                 //计算NSString高度
-                let height = content.dotzuX_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
+                let height = content.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 30))
                 return height + 70
             }
             return 0
@@ -262,15 +459,12 @@ extension NetworkDetailViewController {
     
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NetworkCell")
-            as! NetworkCell
-        cell.httpModel = httpModel
-        return cell.contentView
+        return headerCell?.contentView
     }
 
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let serverURL = DotzuXSettings.shared.serverURL else {return 0}
+        guard let serverURL = CocoaDebugSettings.shared.serverURL else {return 0}
         
         var height: CGFloat = 0.0
         if let cString = self.httpModel?.url.absoluteString.cString(using: String.Encoding.utf8) {
@@ -279,23 +473,43 @@ extension NetworkDetailViewController {
                 if self.httpModel?.url.absoluteString.contains(serverURL) == true {
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .heavy), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.dotzuX_height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.boldSystemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }else{
                     //计算NSString高度
                     if #available(iOS 8.2, *) {
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13, weight: .regular), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     } else {
                         // Fallback on earlier versions
-                        height = content_.dotzuX_height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
+                        height = content_.height(with: UIFont.systemFont(ofSize: 13), constraintToWidth: (UIScreen.main.bounds.size.width - 92))
                     }
                 }
                 return height + 57
             }
         }
         return 0
+    }
+}
+
+//MARK: - MFMailComposeViewControllerDelegate
+extension NetworkDetailViewController {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        controller.dismiss(animated: true) {
+            if error != nil {
+                let alert = UIAlertController.init(title: error?.localizedDescription, message: nil, preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "OK", style: .cancel, handler: { (_) in
+                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+            }
+        }
     }
 }

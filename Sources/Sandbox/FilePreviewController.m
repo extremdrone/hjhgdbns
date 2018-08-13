@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "FilePreviewController.h"
@@ -87,7 +87,7 @@
                 break;
             }
             default:
-                //copyied by liman
+                //copy by CocoaDebug
                 self.textView = [[UITextView alloc] initWithFrame:self.view.bounds];
                 self.textView.editable = NO;
                 self.textView.alwaysBounceVertical = YES;
@@ -116,7 +116,7 @@
                     NSData *data = [NSData dataWithContentsOfFile:self.fileInfo.URL.path];
                     
                     if (!data) {
-                        //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by liman
+                        //沙盒主目录.com.apple.mobile_container_manager.metadata.plist真机会崩溃 by CocoaDebug
                         dispatch_async(dispatch_get_main_queue(), ^{
                             self.textView.text = @" unable to preview";
                             self.textView.backgroundColor = [UIColor blackColor];

@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,9 @@ class LogViewController: UIViewController {
     var selectedSegment_0: Bool = false
     var selectedSegment_1: Bool = false
     
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var deleteItem: UIBarButtonItem!
     
     @IBOutlet weak var defaultTableView: UITableView!
     @IBOutlet weak var defaultSearchBar: UISearchBar!
@@ -103,7 +105,7 @@ class LogViewController: UIViewController {
             
             self.defaultCacheModels = self.defaultModels
             
-            self.searchLogic(DotzuXSettings.shared.logSearchWordDefault ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordDefault ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
@@ -147,7 +149,7 @@ class LogViewController: UIViewController {
             
             self.colorCacheModels = self.colorModels
             
-            self.searchLogic(DotzuXSettings.shared.logSearchWordColor ?? "")
+            self.searchLogic(CocoaDebugSettings.shared.logSearchWordColor ?? "")
             
             dispatch_main_async_safe { [weak self] in
                 self?.colorTableView.reloadData()
@@ -179,17 +181,20 @@ class LogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        segmentedControl.tintColor = Color.mainGreen
+        deleteItem.tintColor = Color.mainGreen
+        
         //add FPSLabel behind status bar
         addStatusBarBackgroundView(viewController: self)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_DotzuX"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil)
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
         defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
-        defaultSearchBar.text = DotzuXSettings.shared.logSearchWordDefault
+        defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordDefault
         defaultSearchBar.isHidden = true
         
         colorTableView.tableFooterView = UIView()
@@ -197,11 +202,11 @@ class LogViewController: UIViewController {
         colorTableView.dataSource = self
         colorTableView.rowHeight = UITableViewAutomaticDimension
         colorSearchBar.delegate = self
-        colorSearchBar.text = DotzuXSettings.shared.logSearchWordColor
+        colorSearchBar.text = CocoaDebugSettings.shared.logSearchWordColor
         colorSearchBar.isHidden = true
         
         //segmentedControl
-        selectedSegmentIndex = DotzuXSettings.shared.logSelectIndex 
+        selectedSegmentIndex = CocoaDebugSettings.shared.logSelectIndex 
         segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 {
@@ -246,7 +251,7 @@ class LogViewController: UIViewController {
             defaultCacheModels = []
             defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordDefault = nil
+            CocoaDebugSettings.shared.logSearchWordDefault = nil
             
             LogStoreManager.shared.resetDefaultLogs()
             
@@ -260,7 +265,7 @@ class LogViewController: UIViewController {
             colorCacheModels = []
             colorSearchBar.text = nil
             colorSearchBar.resignFirstResponder()
-            DotzuXSettings.shared.logSearchWordColor = nil
+            CocoaDebugSettings.shared.logSearchWordColor = nil
             
             LogStoreManager.shared.resetColorLogs()
             
@@ -272,7 +277,7 @@ class LogViewController: UIViewController {
     
     @IBAction func segmentedControlAction(_ sender: UISegmentedControl) {
         selectedSegmentIndex = segmentedControl.selectedSegmentIndex
-        DotzuXSettings.shared.logSelectIndex = selectedSegmentIndex
+        CocoaDebugSettings.shared.logSelectIndex = selectedSegmentIndex
         
         if selectedSegmentIndex == 0 && selectedSegment_0 == false {
             selectedSegment_0 = true
@@ -491,14 +496,14 @@ extension LogViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
         if searchBar == defaultSearchBar {
-            DotzuXSettings.shared.logSearchWordDefault = searchText
+            CocoaDebugSettings.shared.logSearchWordDefault = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in
                 self?.defaultTableView.reloadData()
             }
         }else{
-            DotzuXSettings.shared.logSearchWordColor = searchText
+            CocoaDebugSettings.shared.logSearchWordColor = searchText
             searchLogic(searchText)
             
             dispatch_main_async_safe { [weak self] in

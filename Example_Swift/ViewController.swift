@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
-//  Example_Swift
+//  Example
+//  man
 //
-//  Created by liman on 05/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     
     func testHTTP() {
+        
         //1.Alamofire
         request("https://httpbin.org/get").responseJSON { response in
             print(response, color: .green)

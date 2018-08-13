@@ -1,35 +1,50 @@
 //
-//  PrefixHeader.pch
-//  Example_Objc
+//  Example
+//  man
 //
-//  Created by liman on 05/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "Example_Objc-Swift.h"
 
-//ignore warning
 #pragma clang diagnostic ignored "-Wunused-value"
 
-//default log
+
+//----------------- white log (default) -----------------
 #ifdef DEBUG
-#define NSLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
+#define NSLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor whiteColor]]
 #else
 #define NSLog(fmt, ...) nil
 #endif
 
-//red log
+
+//----------------- red log -----------------
 #ifdef DEBUG
-#define RedLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
+#define RedLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor redColor]]
 #else
 #define RedLog(fmt, ...) nil
 #endif
 
-//blue log
+
+//----------------- blue log -----------------
 #ifdef DEBUG
-#define BlueLog(fmt, ...) [DotzuX objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
+#define BlueLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor blueColor]]
 #else
 #define BlueLog(fmt, ...) nil
 #endif
+
+
+//----------------- yellow log -----------------
+#ifdef DEBUG
+#define YellowLog(fmt, ...) [CocoaDebug objcLog:[[NSString stringWithUTF8String:__FILE__] lastPathComponent] :NSStringFromSelector(_cmd) :__LINE__ :(fmt, ##__VA_ARGS__) :[UIColor yellowColor]]
+#else
+#define YellowLog(fmt, ...) nil
+#endif
+
+
+//----------------- other color log -----------------
+//...
+
 
 

@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class CrashStoreManager {
     
     //MARK: - public
     func addCrash(_ crash: CrashModel) {
-        if self.crashArray.count >= DotzuXSettings.shared.logMaxCount {
+        if self.crashArray.count >= CocoaDebugSettings.shared.logMaxCount {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }
@@ -39,21 +39,21 @@ class CrashStoreManager {
     
     func resetCrashs() {
         self.crashArray.removeAll()
-        UserDefaults.standard.removeObject(forKey: "crashArchive_DotzuX")
-        UserDefaults.standard.removeObject(forKey: "crashCount_DotzuX")
+        UserDefaults.standard.removeObject(forKey: "crashArchive_CocoaDebug")
+        UserDefaults.standard.removeObject(forKey: "crashCount_CocoaDebug")
         UserDefaults.standard.synchronize()
     }
     
     //MARK: - private
     private func archiveCrashs(_ crashs: [CrashModel]) {
         let dataArchive = NSKeyedArchiver.archivedData(withRootObject: crashs)
-        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_DotzuX")
-        UserDefaults.standard.set(crashs.count, forKey: "crashCount_DotzuX")
+        UserDefaults.standard.set(dataArchive, forKey: "crashArchive_CocoaDebug")
+        UserDefaults.standard.set(crashs.count, forKey: "crashCount_CocoaDebug")
         UserDefaults.standard.synchronize()
     }
     
     private func getCrashs() -> [CrashModel] {
-        guard let data = UserDefaults.standard.object(forKey: "crashArchive_DotzuX") as? Data else {return []}
+        guard let data = UserDefaults.standard.object(forKey: "crashArchive_CocoaDebug") as? Data else {return []}
         do {
             if #available(iOS 9.0, *) {
                 let dataArchive = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)

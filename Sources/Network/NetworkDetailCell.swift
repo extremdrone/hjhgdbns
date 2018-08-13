@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -62,25 +62,25 @@ class NetworkDetailCell: UITableViewCell {
             }
             
             //to JSON
-            if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
-//                editView.isHidden = false
-            }else{
-                if detailModel?.title == "REQUEST" {
-                    if let content = detailModel?.content {
-                        if let _ = content.stringToDictionary() {
-                            //JSON格式
-//                            editView.isHidden = true
-                        }else{
-                            //Form格式
-//                            editView.isHidden = false
-                        }
-                    }else{
-//                        editView.isHidden = true
-                    }
-                }else{
-//                    editView.isHidden = true
-                }
-            }
+//            if detailModel?.title == "REQUEST HEADER" || detailModel?.title == "RESPONSE HEADER" {
+////                editView.isHidden = false
+//            }else{
+//                if detailModel?.title == "REQUEST" {
+//                    if let content = detailModel?.content {
+//                        if let _ = content.stringToDictionary() {
+//                            //JSON格式
+////                            editView.isHidden = true
+//                        }else{
+//                            //Form格式
+////                            editView.isHidden = false
+//                        }
+//                    }else{
+////                        editView.isHidden = true
+//                    }
+//                }else{
+////                    editView.isHidden = true
+//                }
+//            }
         }
     }
     
@@ -108,5 +108,18 @@ class NetworkDetailCell: UITableViewCell {
         if let tapEditViewCallback = tapEditViewCallback {
             tapEditViewCallback(detailModel)
         }
+    }
+    
+    
+    //MARK: - override
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(selectAll(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func selectAll(_ sender: Any?) {
+        contentTextView.selectAll(sender)
     }
 }

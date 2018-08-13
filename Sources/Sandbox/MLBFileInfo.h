@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -39,16 +39,16 @@ typedef NS_ENUM(NSUInteger, MLBFileType) {
 @interface MLBFileInfo : NSObject
 
 @property (nonatomic, strong) NSURL *URL;
-@property (nonatomic, strong) NSString *displayName;
-@property (nonatomic, strong) NSString *extension;
-@property (nonatomic, strong) NSString *modificationDateText;
+@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy) NSString *extension;
+@property (nonatomic, copy) NSString *modificationDateText;
 @property (nonatomic, strong) NSDictionary<NSString *, id> *attributes;
 
 @property (nonatomic, assign) MLBFileType type;
 @property (nonatomic, assign, readonly) BOOL isDirectory;
 @property (nonatomic, assign) NSUInteger filesCount; // File always 0
 
-@property (nonatomic, strong, readonly) NSString *typeImageName;
+@property (nonatomic, copy, readonly) NSString *typeImageName;
 @property (nonatomic, assign, readonly) BOOL isCanPreviewInQuickLook;
 @property (nonatomic, assign, readonly) BOOL isCanPreviewInWebView;
 

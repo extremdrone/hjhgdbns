@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,6 +12,9 @@
 #import "MemoryHelper.h"
 
 @interface NetworkHelper : NSObject
+
+//color for objc
+@property (nonatomic, strong) UIColor *mainColor;
 
 /**
  *  设置只抓取的域名,忽略大小写,默认抓取所有

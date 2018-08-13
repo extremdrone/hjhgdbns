@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 enum EditType {
@@ -26,11 +26,11 @@ class JsonViewController: UITableViewController {
     
     //编辑过的url
     var editedURLString: String?
-    //编辑过的content (request/header)
+    //编辑过的content
     var editedContent: String?
     
     static func instanceFromStoryBoard() -> JsonViewController {
-        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: DotzuX.self))
+        let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
     }
     
@@ -92,13 +92,13 @@ class JsonViewController: UITableViewController {
         {
             imageView.isHidden = true
             textView.isHidden = false
-            textView.text = detailModel?.requestHeaderFields?.dictionaryToString()
+            textView.text = String(detailModel?.requestHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else if editType == .responseHeader
         {
             imageView.isHidden = true
             textView.isHidden = false
-            textView.text = detailModel?.responseHeaderFields?.dictionaryToString()
+            textView.text = String(detailModel?.responseHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
         }
         else
         {
@@ -114,5 +114,18 @@ class JsonViewController: UITableViewController {
                 imageView.image = image
             }
         }
+    }
+    
+    
+    //MARK: - override
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(selectAll(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func selectAll(_ sender: Any?) {
+        textView.selectAll(sender)
     }
 }

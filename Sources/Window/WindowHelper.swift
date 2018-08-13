@@ -1,21 +1,22 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-    var window: DotzuXWindow?
-    lazy var vc = DotzuXViewController()
+    
+    var window: CocoaDebugWindow?
     var displayedList = false
- 
+    lazy var vc = CocoaDebugViewController()
+    
     private override init() {
-        self.window = DotzuXWindow(frame: UIScreen.main.bounds)
+        self.window = CocoaDebugWindow(frame: CGRect(x: 0, y: CocoaDebugWindow.y, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - CocoaDebugWindow.y))
         super.init()
     }
 

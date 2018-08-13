@@ -1,15 +1,16 @@
 //
-//  AboutViewController.swift
-//  PhiHome
+//  Example
+//  man
 //
-//  Created by liman on 13/12/2017.
-//  Copyright © 2017 Phicomm. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
 class AboutViewController: UITableViewController {
+    
     
     //MARK: - init
     override func viewDidLoad() {
@@ -20,7 +21,7 @@ class AboutViewController: UITableViewController {
     
     //MARK: - target action
     @IBAction func tapUrl(_ sender: UITapGestureRecognizer) {
-        guard let url = URL.init(string: "http://DotzuX.com") else {return}
+        guard let url = URL.init(string: "https://github.com/CocoaDebug/CocoaDebug") else {return}
         
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

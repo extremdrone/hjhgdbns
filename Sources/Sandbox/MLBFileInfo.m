@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "MLBFileInfo.h"
@@ -16,7 +16,7 @@
 
 @interface MLBFileInfo ()
 
-@property (nonatomic, strong, readwrite) NSString *typeImageName;
+@property (nonatomic, copy, readwrite) NSString *typeImageName;
 
 @end
 
@@ -180,7 +180,7 @@
 
 #pragma mark - helper
 
-//按照时间排序 by liman
+//按照时间排序 by CocoaDebug
 + (NSMutableArray<MLBFileInfo *> *)sortedMLBFileInfoArray:(NSMutableArray<MLBFileInfo *> *)array
 {
     return [[[array copy] sortedArrayUsingComparator:^NSComparisonResult(MLBFileInfo  *_Nonnull obj1, MLBFileInfo  *_Nonnull obj2) {
@@ -219,7 +219,7 @@
         }
     }
     
-    //按照时间排序 by liman
+    //按照时间排序 by CocoaDebug
     return [self sortedMLBFileInfoArray:fileInfos];
 }
 

@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import Foundation
@@ -35,7 +35,7 @@ public class LogHelper: NSObject {
         LogStoreManager.shared.addLog(newLog)
         
         dispatch_main_async_safe {
-            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_DotzuX"), object: nil, userInfo: nil)
+            NotificationCenter.default.post(name: NSNotification.Name("refreshLogs_CocoaDebug"), object: nil, userInfo: nil)
         }
     }
 }

@@ -1,9 +1,9 @@
 //
-//  ViewController.m
-//  Example_Objc
+//  Example
+//  man
 //
-//  Created by liman on 05/03/2018.
-//  Copyright © 2018 liman. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -20,11 +20,14 @@
     
     NSLog(@"hello world");
     RedLog(@"hello world red");
+    YellowLog(@"hello world yellow");
     
     [self testHTTP];
 }
 
+
 - (void)testHTTP {
+    
     //1.AFNetworking
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];

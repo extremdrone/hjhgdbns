@@ -1,9 +1,9 @@
 //
-//  DotzuX.swift
-//  demo
+//  Example
+//  man
 //
-//  Created by liman on 26/11/2017.
-//  Copyright © 2017 Apple. All rights reserved.
+//  Created by man on 11/11/2018.
+//  Copyright © 2018 man. All rights reserved.
 //
 
 import UIKit
@@ -29,5 +29,18 @@ class LogCell: UITableViewCell {
                 self.contentView.backgroundColor = .black
             }
         }
+    }
+    
+    
+    //MARK: - override
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(selectAll(_:)) {
+            return true
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+    
+    override func selectAll(_ sender: Any?) {
+        labelContent.selectAll(sender)
     }
 }
